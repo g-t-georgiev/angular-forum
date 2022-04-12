@@ -19,6 +19,10 @@ Public parts are "home page", where people can read and search all themes availa
 ├── node_modules/
 ├── src
 │   ├── app
+│   │   ├── core
+│   │   │   ├── core.module.ts
+│   │   ├── shared
+│   │   │   ├── shared.module.ts
 │   │   ├── app.component.css
 │   │   ├── app.component.html
 │   │   ├── app.component.spec.ts
