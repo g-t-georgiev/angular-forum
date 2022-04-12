@@ -14,7 +14,10 @@ Public parts are "home page", where people can read and search all themes availa
 ## Project Architecture
 
 ```
-├── .vscode/
+├── .vscode
+│   ├── extenstion.json
+│   ├── launch.json
+│   ├── tasks.json
 ├── .angular/
 ├── node_modules/
 ├── src
