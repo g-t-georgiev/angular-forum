@@ -13,6 +13,7 @@ Public parts are "home page", where people can read and search all themes availa
 
 ## Project Architecture
 
+```
 ├── .vscode/
 ├── .angular/
 ├── node_modules/
@@ -46,3 +47,4 @@ Public parts are "home page", where people can read and search all themes availa
 ├── tsconfig.app.json
 ├── tsconfig.json
 └── tsconfig.spec.json
+```
