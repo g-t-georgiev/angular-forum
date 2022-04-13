@@ -23,6 +23,20 @@ Public parts are "home page", where people can read and search all themes availa
 ├── src
 │   ├── app
 │   │   ├── core
+│   │   │   ├── interceptors
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── attach-cookie.interceptors.spec.ts
+│   │   │   │   ├── attach-cooke.interceptor.ts
+│   │   │   │   ├── auth.interceptor.spec.ts
+│   │   │   │   ├── auth.interceptor.ts
+│   │   │   ├── services
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── auth.service.spec.ts
+│   │   │   │   ├── auth.service.ts
+│   │   │   ├── models
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── base.ts
+│   │   │   │   ├── user.ts
 │   │   │   ├── core.module.ts
 │   │   ├── shared
 │   │   │   ├── shared.module.ts
