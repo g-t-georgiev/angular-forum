@@ -1,10 +1,25 @@
 <nav>
     <ul>
+
         <li>
             <a routerLink="/themes">Browse</a>
         </li>
-        <li>
-            <a routerLink="/users/login">Login/Register</a>
-        </li>
+
+        <ng-container *ngIf="isLoggedIn$ | async">
+            <li>
+                <a routerLink="/users/profile">{{(currentUser$ | async)?.username ?? 'N/A'}}'s profile</a>
+            </li>
+
+            <li>
+                <a routerLink="/users/logout">Logout</a>
+            </li>
+        </ng-container>
+
+        <ng-container *ngIf="!(isLoggedIn$ | async)">
+            <li>
+                <a routerLink="/users/login">Login/Register</a>
+            </li>
+        </ng-container>
+
     </ul>
 </nav>
