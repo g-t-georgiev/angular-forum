@@ -27,7 +27,9 @@ export class NavComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    logoutHandler() {
+    logoutHandler(ev: Event) {
+        ev.preventDefault();
+        
         this.authService.logout$()
             .subscribe({
                 complete: () => {
