@@ -1,4 +1,8 @@
 nav ul {
     display: flex;
-    justify-content: space-evenly;
+    gap: 1em;
+
+    width: 30%;
+    margin-inline-end: auto;
+    padding: 1em;
 }
