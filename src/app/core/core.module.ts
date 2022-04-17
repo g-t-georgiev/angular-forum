@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AuthService } from './services';
+import { AuthService, MessageBus } from './services';
 import { AttachCookieInterceptor, AuthInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
-
 
 
 @NgModule({
@@ -27,6 +26,7 @@ export class CoreModule {
             ngModule: CoreModule,
             providers: [
                 AuthService,
+                MessageBus.MessageBusService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: AttachCookieInterceptor,
