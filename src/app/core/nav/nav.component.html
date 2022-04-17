@@ -1,6 +1,8 @@
 <nav>
+    <section class="logo">
+        <span>Angular Forum</span>
+    </section>
     <ul>
-
         <li>
             <a routerLink="/themes">Browse</a>
         </li>
@@ -27,6 +29,6 @@
     </ul>
 </nav>
 
-<section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg">
+<section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg" (click)="toggleNotification()">
     {{notification}}
 </section>
