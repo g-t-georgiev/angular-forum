@@ -26,3 +26,7 @@
 
     </ul>
 </nav>
+
+<section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg">
+    {{notification}}
+</section>

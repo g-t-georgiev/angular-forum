@@ -6,3 +6,17 @@ nav ul {
     margin-inline-end: auto;
     padding: 1em;
 }
+
+.notification {
+    width: 30%;
+    margin-inline-start: auto;
+    padding: 1em;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
