@@ -81,4 +81,8 @@ export class NavComponent implements OnInit, OnDestroy {
             })
     }
 
+    toggleNotification() {
+        this.messageService.clear();
+    }
+
 }
