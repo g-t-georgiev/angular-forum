@@ -1,22 +1,79 @@
+:host {
+    display: flow-root;
+
+    --nav-font-size: 1.5em;
+    --nav-logo-font-size: 2em;
+    --nav-color: black;
+    --nav-padding: 1em;
+    --nav-border-size: 1px;
+    --nav-border-color: black;
+    --nav-border-style: solid;
+
+    --notification-float: right;
+    --notification-font-size: 1.2em;
+    --notification-padding: 1em;
+    --notification-border-width: 1px;
+    --notification-border-style: solid;
+    --notification-margin-block-start: .5em;
+    --notification-margin-inline-end: 1em;
+}
+
+nav {
+    border-bottom: var(--nav-border-size) var(--nav-border-style) var(--nav-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: var(--nav-logo-font-size);
+    padding: var(--nav-padding);
+}
+
 nav ul {
     display: flex;
-    gap: 1em;
+    justify-content: flex-start;
+    gap: calc(var(--nav-padding) * 2);
 
-    width: 30%;
-    margin-inline-end: auto;
-    padding: 1em;
+    padding: var(--nav-padding);
+}
+
+nav a {
+    font-size: var(--nav-font-size);
+    color: var(--nav-color);
 }
 
 .notification {
-    width: 30%;
-    margin-inline-start: auto;
-    padding: 1em;
+    --notification-background-opacity: .2;
+
+    float: var(--notification-float);
+    font-size: var(--notification-font-size);
+    padding: var(--notification-padding);
+    border-width: var(--notification-border-width);
+    border-style: var(--notification-border-style);
+    margin-block-start: var(--notification-margin-block-start);
+    margin-inline-end: var(--notification-margin-inline-end);
 }
 
-.error {
-    color: red;
+.notification:hover {
+    --notification-background-opacity: .4;
+    cursor: pointer;
 }
 
-.success {
-    color: green;
+.notification.error {
+    --notification-error-color: rgb(255, 0, 0);
+    --notification-error-background-color: rgba(255, 0, 0, var(--notification-background-opacity));
+
+    border-color: var(--notification-error-color);
+    background-color: var(--notification-error-background-color);
+    color: var(--notification-error-color);
+}
+
+.notification.success {
+    --notification-success-color: rgb(0, 128, 0);
+    --notification-success-background-color: rgba(0, 128, 0, var(--notification-background-opacity));
+
+    border-color: var(--notification-success-color);
+    background-color: var(--notification-success-background-color);
+    color: var(--notification-success-color);
 }
