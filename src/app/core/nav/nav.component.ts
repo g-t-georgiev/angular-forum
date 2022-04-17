@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IUser } from '../models';
-import { AuthService } from '../services';
+import { AuthService, MessageBus } from '../services';
 
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, OnDestroy {
 
+    private respMsgSubscription!: Subscription;
+    private timerId!: ReturnType<typeof setTimeout>;
     private isLogginOut: boolean = false;
+
+    notification: string = '';
+    isErrorMsg: boolean = false;
 
     get currentUser$(): Observable<IUser | undefined> {
         return this.authService.currentUser$;
@@ -23,10 +28,32 @@ export class NavComponent implements OnInit {
 
     constructor(
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private messageService: MessageBus.MessageBusService
     ) { }
 
     ngOnInit(): void {
+        this.respMsgSubscription = this.messageService.onNewMessage$
+            .subscribe({
+                next: (message) => {
+                    this.notification = message?.text ?? '';
+                    this.isErrorMsg = message?.type === MessageBus.MessageTypes.Error;
+
+                    if (this.notification) {
+                        this.timerId = setTimeout(() => {
+                            this.messageService.clear();
+                        }, 5e3);
+                    }
+                }
+            })
+    }
+
+    ngOnDestroy(): void {
+        this.respMsgSubscription?.unsubscribe();
+
+        if (this.timerId) {
+            clearTimeout(this.timerId);
+        }
     }
 
     logoutHandler(ev: Event) {
@@ -42,11 +69,13 @@ export class NavComponent implements OnInit {
             .subscribe({
                 complete: () => {
                     this.isLogginOut = false;
+                    this.messageService.notify({ text: 'Logout successful!', type: 'success' });
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
                     console.log(err);
                     this.isLogginOut = false;
+                    this.messageService.notify({ text: err.error.message ?? 'Something went wrong.', type: 'error' });
                     this.router.navigate(['/home']);
                 }
             })
