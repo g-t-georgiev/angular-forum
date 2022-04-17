@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AuthService, MessageBus } from './services';
-import { AttachCookieInterceptor, AuthInterceptor } from './interceptors';
+import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
 
 
@@ -35,6 +35,11 @@ export class CoreModule {
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: AuthInterceptor,
+                    multi: true
+                },
+                {
+                    provide: HTTP_INTERCEPTORS,
+                    useClass: ResponseMessageInterceptor,
                     multi: true
                 }
             ]
