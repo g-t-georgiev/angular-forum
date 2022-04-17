@@ -17,7 +17,10 @@
 
         <ng-container *ngIf="!(isLoggedIn$ | async)">
             <li>
-                <a routerLink="/users/login">Login/Register</a>
+                <a routerLink="/users/sign?mode='login'">Login</a>
+            </li>
+            <li>
+                <a routerLink="/users/sign?mode='register'">Register</a>
             </li>
         </ng-container>
 
