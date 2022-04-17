@@ -11,7 +11,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 AngularForum is a project for the Softuni angular course final exam. It is an app for reading, creating and managing themes and posts. The app has public and private parts. 
 Public parts are "home page", where people can read and search all themes available, "theme details page", where people can read all posts for the current theme and "login/register page". Private part is "user profile page", where logged in users can read and edit their profile information, keep track of their own created themes, posts, as well as the themes they've subscribed to and the posts they've liked.
 
-## Project Architecture
+## Project Structure
 
 ```
 ├── .vscode
@@ -29,10 +29,14 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   │   ├── attach-cooke.interceptor.ts
 │   │   │   │   ├── auth.interceptor.spec.ts
 │   │   │   │   ├── auth.interceptor.ts
+│   │   │   │   ├── response-message.interceptor.spec.ts
+│   │   │   │   ├── response-message.interceptor.ts
 │   │   │   ├── services
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── auth.service.spec.ts
 │   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── message-bus.service.spec.ts
+│   │   │   │   ├── message-bus.service.ts
 │   │   │   ├── models
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── base.ts
