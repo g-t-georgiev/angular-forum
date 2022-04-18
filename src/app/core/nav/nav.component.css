@@ -26,6 +26,7 @@ nav {
 
 nav .logo {
     font-size: var(--nav-logo-font-size);
+    color: inherit;
     padding: var(--nav-padding);
 }
 
