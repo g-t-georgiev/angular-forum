@@ -27,8 +27,8 @@ export class AppModeSwitchService implements OnInit, OnDestroy {
 
     private _window = this.document.defaultView;
     private _matchMedia = this._window?.matchMedia;
-    private _darkColorPreferenceQuery = this._matchMedia?.(DARK);
-    private _lightColorPreferenceQuery = this._matchMedia?.(LIGHT);
+    private _darkColorPreferenceQuery: MediaQueryList | undefined;
+    private _lightColorPreferenceQuery: MediaQueryList | undefined;
     private _isDarkModePreferred: boolean = false;
     private _isLightModePreferred: boolean = false;
 
@@ -49,7 +49,10 @@ export class AppModeSwitchService implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        this._darkColorPreferenceQuery = this._matchMedia?.(DARK);
         this._darkColorPreferenceQuery?.addEventListener('change', this.toggleThemeMode);
+        
+        this._lightColorPreferenceQuery = this._matchMedia?.(LIGHT);
         this._lightColorPreferenceQuery?.addEventListener('change', this.toggleThemeMode);
     }
 
@@ -71,6 +74,6 @@ export class AppModeSwitchService implements OnInit, OnDestroy {
         if (this._lightColorPreferenceQuery?.matches) {
             this._isLightModePreferred = true;
         }
-        
+
     }
 }
