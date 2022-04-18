@@ -2,10 +2,8 @@
 
 :root {
     /* Background Color Styles */
-    --light-mode-background-color-default: #dee4e7;
-    --light-mode-background-color-preferred: #fff;
-    --dark-mode-background-color-default: #37474f;
-    --dark-mode-background-color-preferred: #222;
+    --light-mode-background-color: #dee4e7;
+    --dark-mode-background-color: #222;
 
     /* Text Color Styles */
 
@@ -24,17 +22,17 @@
 
 body {
     font-family: Helvetica, sans-serif;
-    background-color: var(--light-mode-background-color-default);
+    background-color: var(--light-mode-background-color);
     color: var(--light-mode-text-color);
 }
 
 .light {
-    background-color: var(--light-mode-background-color-default);
+    background-color: var(--light-mode-background-color);
     color: var(--light-mode-text-color);
 }
 
 .dark {
-    background-color: var(--dark-mode-background-color-default);
+    background-color: var(--dark-mode-background-color);
     color: var(--dark-mode-text-color);
 }
 
@@ -52,7 +50,7 @@ a:hover {
 @media (prefers-color-scheme: dark) {
     body,
     body.dark {
-        background-color: var(--dark-mode-background-color-preferred);
+        background-color: var(--dark-mode-background-color);
         color: var(--dark-mode-text-color);
     }
 }
@@ -60,7 +58,7 @@ a:hover {
 @media (prefers-color-scheme: light) {
     body,
     body.light {
-        background-color: var(--light-mode-background-color-preferred);
+        background-color: var(--light-mode-background-color);
         color: var(--light-mode-text-color);
     }
 }
