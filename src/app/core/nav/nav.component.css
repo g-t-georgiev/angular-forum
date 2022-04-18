@@ -3,7 +3,6 @@
 
     --nav-font-size: 1.5em;
     --nav-logo-font-size: 2em;
-    --nav-color: black;
     --nav-padding: 1em;
     --nav-border-size: 1px;
     --nav-border-color: black;
@@ -40,7 +39,7 @@ nav ul {
 
 nav a {
     font-size: var(--nav-font-size);
-    color: var(--nav-color);
+    color: inherit;
 }
 
 .notification {
