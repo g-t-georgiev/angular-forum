@@ -1,5 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { AppModeSwitchService } from '../services';
 
 @Component({
     selector: 'app-mode-switch',
@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
 export class AppModeSwitchComponent implements OnInit {
 
     constructor(
-        @Inject(DOCUMENT) document: Document
+        private appThemeService: AppModeSwitchService
     ) { }
 
     ngOnInit(): void {
