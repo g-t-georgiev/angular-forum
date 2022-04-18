@@ -2,8 +2,8 @@ import { Injectable, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-const DARK = 'prefers-color-scheme: dark';
-const LIGHT = 'prefers-color-scheme: light';
+const DARK = '(prefers-color-scheme: dark)';
+const LIGHT = '(prefers-color-scheme: light)';
 
 interface Mode {
     name: 'dark' | 'light';
@@ -23,10 +23,9 @@ class ThemeMode implements Mode {
 }
 
 @Injectable()
-export class AppModeSwitchService implements OnInit, OnDestroy {
+export class AppModeSwitchService {
 
     private _window = this.document.defaultView;
-    private _matchMedia = this._window?.matchMedia;
     private _darkColorPreferenceQuery: MediaQueryList | undefined;
     private _lightColorPreferenceQuery: MediaQueryList | undefined;
     private _isDarkModePreferred: boolean = false;
@@ -46,19 +45,9 @@ export class AppModeSwitchService implements OnInit, OnDestroy {
             : { name: 'light', type: 'default' }
         );
         this.themeMode$ = this._themeMode.asObservable();
-    }
 
-    ngOnInit(): void {
-        this._darkColorPreferenceQuery = this._matchMedia?.(DARK);
-        this._darkColorPreferenceQuery?.addEventListener('change', this.toggleThemeMode);
-        
-        this._lightColorPreferenceQuery = this._matchMedia?.(LIGHT);
-        this._lightColorPreferenceQuery?.addEventListener('change', this.toggleThemeMode);
-    }
-
-    ngOnDestroy(): void {
-        this._darkColorPreferenceQuery?.removeEventListener('change', this.toggleThemeMode);
-        this._lightColorPreferenceQuery?.removeEventListener('change', this.toggleThemeMode);
+        this._darkColorPreferenceQuery = this._window?.matchMedia?.(DARK);
+        this._lightColorPreferenceQuery = this._window?.matchMedia?.(LIGHT);
     }
 
     toggleThemeMode(ev: Event) { 
@@ -66,14 +55,16 @@ export class AppModeSwitchService implements OnInit, OnDestroy {
     }
 
     detectPreference(): void {
-
+        
         if (this._darkColorPreferenceQuery?.matches) {
+            console.log('Dark mode preferred: ', this._darkColorPreferenceQuery?.matches);
             this._isDarkModePreferred = true;
         }
 
         if (this._lightColorPreferenceQuery?.matches) {
+            console.log('Light mode preferred: ', this._lightColorPreferenceQuery?.matches);
             this._isLightModePreferred = true;
         }
-
+        
     }
 }
