@@ -1,0 +1,38 @@
+#control {
+    display: none;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.switch {
+    width: 3em;
+    height: 1.5em;
+    padding: .2em;
+    border-radius: 1em;
+    transition: all .2s linear;
+
+    background-color: #cfd8dc;
+}
+
+.switch__indicator {
+    display: block;
+    height: calc(100% + .1em);
+    width: 50%;
+    border-radius: calc(1em + 2 * .2em);
+    transition: all .2s linear;
+
+    background-color: #90a4ae;
+}
+
+#control:checked + .switch {
+    background-color: #b0bec5;
+}
+
+#control:checked + .switch .switch__indicator {
+    transform: translateX(100%);
+    background-color: #0071bc;
+}
