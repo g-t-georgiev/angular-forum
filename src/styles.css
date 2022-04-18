@@ -48,6 +48,7 @@ a:hover {
     body,
     body.dark-mode {
         background-color: var(--dark-mode-background-color-preferred);
+        color: var(--dark-mode-text-color);
     }
 }
 
@@ -55,6 +56,7 @@ a:hover {
     body,
     body.dark-mode {
         background-color: var(--light-mode-background-color-preferred);
+        color: var(--light-mode-text-color);
     }
 }
 
