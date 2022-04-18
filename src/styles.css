@@ -28,7 +28,12 @@ body {
     color: var(--light-mode-text-color);
 }
 
-body.dark-mode {
+.light {
+    background-color: var(--light-mode-background-color-default);
+    color: var(--light-mode-text-color);
+}
+
+.dark {
     background-color: var(--dark-mode-background-color-default);
     color: var(--dark-mode-text-color);
 }
@@ -46,7 +51,7 @@ a:hover {
 
 @media (prefers-color-scheme: dark) {
     body,
-    body.dark-mode {
+    body.dark {
         background-color: var(--dark-mode-background-color-preferred);
         color: var(--dark-mode-text-color);
     }
@@ -54,7 +59,7 @@ a:hover {
 
 @media (prefers-color-scheme: light) {
     body,
-    body.dark-mode {
+    body.light {
         background-color: var(--light-mode-background-color-preferred);
         color: var(--light-mode-text-color);
     }
