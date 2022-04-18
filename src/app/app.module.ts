@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { AuthService } from './core/services';
+import { AppModeSwitchService, AuthService } from './core/services';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,14 @@ import { AuthService } from './core/services';
               return () => authService.authenticate$();
           },
           deps: [AuthService],
+          multi: true
+      },
+      {
+          provide: APP_INITIALIZER,
+          useFactory: (appModeSwitchService: AppModeSwitchService) => {
+              return () => appModeSwitchService.detectPreference();
+          },
+          deps: [AppModeSwitchService],
           multi: true
       }
   ],
