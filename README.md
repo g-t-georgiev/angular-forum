@@ -23,6 +23,16 @@ Public parts are "home page", where people can read and search all themes availa
 ├── src
 │   ├── app
 │   │   ├── core
+│   │   │   ├── nav
+│   │   │   │   ├── nav.component.css
+│   │   │   │   ├── nav.component.html
+│   │   │   │   ├── nav.component.spec.ts
+│   │   │   │   ├── nav.component.ts
+│   │   │   ├── app-mode-switch
+│   │   │   │   ├── app-mode-switch.component.css
+│   │   │   │   ├── app-mode-switch.component.html
+│   │   │   │   ├── app-mode-switch.component.spec.ts
+│   │   │   │   ├── app-mode-switch.component.ts
 │   │   │   ├── interceptors
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── attach-cookie.interceptors.spec.ts
@@ -37,6 +47,8 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   │   ├── auth.service.ts
 │   │   │   │   ├── message-bus.service.spec.ts
 │   │   │   │   ├── message-bus.service.ts
+│   │   │   │   ├── app-mode-switch.service.spec.ts
+│   │   │   │   ├── app-mode-switch.service.ts
 │   │   │   ├── models
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── base.ts
