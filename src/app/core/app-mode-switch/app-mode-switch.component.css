@@ -16,6 +16,9 @@ label {
     transition: all .2s linear;
 
     background-color: #cfd8dc;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #90a4ae;
 }
 
 .switch__indicator {
@@ -30,6 +33,7 @@ label {
 
 #control:checked + .switch {
     background-color: #b0bec5;
+    border-color: #0071bc;
 }
 
 #control:checked + .switch .switch__indicator {
