@@ -1,5 +1,21 @@
 @import url('./assets/reset.css');
 
+:root {
+    /* Background Color Styles */
+    --light-mode-background-color-default: #dee4e7;
+    --light-mode-background-color-preferred: #fff;
+    --dark-mode-background-color-default: #37474f;
+    --dark-mode-background-color-preferred: #222;
+
+    /* Text Color Styles */
+
+    /* Primary Text Colors */
+    --light-mode-text-color: #222;
+    --dark-mode-text-color: #eceff1;
+}
+
+/* General Styles */
+
 *,
 *::after,
 *::before {
@@ -8,7 +24,13 @@
 
 body {
     font-family: Helvetica, sans-serif;
-    color: black;
+    background-color: var(--light-mode-background-color-default);
+    color: var(--light-mode-text-color);
+}
+
+body.dark-mode {
+    background-color: var(--dark-mode-background-color-default);
+    color: var(--dark-mode-text-color);
 }
 
 a {
@@ -19,6 +41,24 @@ a {
 a:hover {
     color: darkgreen;
 }
+
+/* Prefered Color Scheme Styles */
+
+@media (prefers-color-scheme: dark) {
+    body,
+    body.dark-mode {
+        background-color: var(--dark-mode-background-color-preferred);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body,
+    body.dark-mode {
+        background-color: var(--light-mode-background-color-preferred);
+    }
+}
+
+/* Responsive Styles */
 
 @media screen and (max-width: 578px) {
     body {
