@@ -6,11 +6,13 @@ import { RouterModule } from '@angular/router';
 import { AuthService, MessageBus } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
+import { AppModeSwitchComponent } from './app-mode-switch/app-mode-switch.component';
 
 
 @NgModule({
     declarations: [
-        NavComponent
+        NavComponent,
+        AppModeSwitchComponent
   ],
     imports: [
         CommonModule,
