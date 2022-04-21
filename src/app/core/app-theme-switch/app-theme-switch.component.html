@@ -3,5 +3,8 @@
     <div class="switch">
         <span class="switch__thumb"></span>
     </div>
-    Dark Mode: {{ isDarkModeOn ? 'On' : 'Off' }}
+    <span>
+        <i class="fa-solid" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i>
+        Dark Mode: {{ isDarkModeOn ? 'On' : 'Off' }}
+    </span>
 </label>
