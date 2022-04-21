@@ -27,6 +27,9 @@ header {
     justify-content: flex-end;
     align-items: center;
     gap: 2em;
+
+    padding-inline: 1em;
+    padding-block-end: 2em;
 }
 
 nav {
