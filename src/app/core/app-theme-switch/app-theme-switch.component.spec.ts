@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppModeSwitchComponent } from './app-mode-switch.component';
+import { AppThemeSwitchComponent } from './app-theme-switch.component';
 
-describe('AppModeSwitchComponent', () => {
-    let component: AppModeSwitchComponent;
-    let fixture: ComponentFixture<AppModeSwitchComponent>;
+describe('AppThemeSwitchComponent', () => {
+    let component: AppThemeSwitchComponent;
+    let fixture: ComponentFixture<AppThemeSwitchComponent>;
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            declarations: [AppModeSwitchComponent]
+            declarations: [AppThemeSwitchComponent]
         })
             .compileComponents();
     });
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppModeSwitchComponent);
+        fixture = TestBed.createComponent(AppThemeSwitchComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
