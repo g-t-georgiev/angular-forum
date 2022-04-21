@@ -9,15 +9,14 @@ label {
 }
 
 .switch {
-    --width: 3em;
-    --height: 1.5em;
-    --padding-top: .2em;
-    --padding-inline: .2em;
-    --padding-bottom: .1em;
-    width: var(--width);
-    height: var(--height);
-    padding: var(--padding-top) var(--padding-inline) var(--padding-bottom);
-    border-radius: 3em;
+    --switch-width: 2em;
+    --switch-height: 1em;
+    --switch-padding-block: 0;
+    --switch-padding-inline: 0;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    padding: var(--switch-padding-block) var(--switch-padding-inline);
+    border-radius: 30% / 70%;
     transition: all .2s linear;
 
     background-color: #cfd8dc;
@@ -26,10 +25,13 @@ label {
     border-color: #90a4ae;
 }
 
-.switch__indicator {
+.switch__thumb {
+    --switch-thumb-width: 50%;
+    --switch-thumb-height: 98%;
+    --switch-thumb-position: 0;
     display: block;
-    height: 100%;
-    width: 50%;
+    height: var(--switch-thumb-height);
+    width: var(--switch-thumb-width);
     border-radius: 50%;
     transition: all .2s linear;
 
@@ -41,25 +43,14 @@ label {
     border-color: #0071bc;
 }
 
-#control:checked + .switch .switch__indicator {
-    transform: translateX(100%);
+#control:checked + .switch .switch__thumb {
+    --switch-thumb-position: calc(var(--switch-width) - (2 * var(--switch-thumb-width)));
+    transform: translateX(var(--switch-thumb-position));
     background-color: #0071bc;
 }
 
 @media screen and (max-width: 578px) {}
 
-@media screen and (min-width: 579px) {
-    .switch {
-        --padding-top: .1em;
-        --padding-inline: .15em;
-        --padding-bottom: .1em;
-    }
-}
+@media screen and (min-width: 579px) {}
 
-@media screen and (min-width: 1288px) {
-    .switch {
-        --padding-top: .2em;
-        --padding-inline: .2em;
-        --padding-bottom: .1em;
-    }
-}
+@media screen and (min-width: 1288px) {}
