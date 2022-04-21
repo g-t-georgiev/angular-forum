@@ -19,6 +19,11 @@ header {
     display: flow-root;
 }
 
+.user-preferences {
+    display: flex;
+    justify-content: flex-end;
+}
+
 nav {
     border-bottom: var(--nav-border-size) var(--nav-border-style) var(--nav-border-color);
     display: flex;
