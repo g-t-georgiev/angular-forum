@@ -7,12 +7,14 @@ import { AuthService, MessageBus, AppThemeSwitchService } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
 import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
+import { AppLangSwitchComponent } from './app-lang-switch/app-lang-switch.component';
 
 
 @NgModule({
     declarations: [
         NavComponent,
-        AppThemeSwitchComponent
+        AppThemeSwitchComponent,
+        AppLangSwitchComponent
   ],
     imports: [
         CommonModule,
@@ -20,7 +22,8 @@ import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.com
     ],
     exports: [
         NavComponent,
-        AppThemeSwitchComponent
+        AppThemeSwitchComponent,
+        AppLangSwitchComponent
     ]
 })
 export class CoreModule {
