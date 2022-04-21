@@ -25,6 +25,8 @@ header {
 .user-preferences {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 2em;
 }
 
 nav {
