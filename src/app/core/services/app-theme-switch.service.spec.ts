@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AppModeSwitchService } from './app-mode-switch.service';
+import { AppThemeSwitchService } from './app-theme-switch.service';
 
 describe('AppModeSwitchService', () => {
-    let service: AppModeSwitchService;
+    let service: AppThemeSwitchService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
-        service = TestBed.inject(AppModeSwitchService);
+        service = TestBed.inject(AppThemeSwitchService);
     });
 
     it('should be created', () => {
