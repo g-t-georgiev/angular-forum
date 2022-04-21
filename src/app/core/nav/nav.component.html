@@ -1,38 +1,42 @@
-<nav>
-    <section class="logo">
-        <span>Angular Forum</span>
+<header>
+
+    <section class="user-preferences">
+        <app-theme-switch></app-theme-switch>
     </section>
-    <ul>
-        <li>
-            <a routerLink="/themes">Browse</a>
-        </li>
 
-        <ng-container *ngIf="isLoggedIn$ | async">
+    <nav>
+        <section class="logo">
+            <span>Angular Forum</span>
+        </section>
+        <ul>
             <li>
-                <a routerLink="/users/profile">{{(currentUser$ | async)?.username ?? 'N/A'}}'s profile</a>
+                <a routerLink="/themes">Browse</a>
             </li>
+    
+            <ng-container *ngIf="isLoggedIn$ | async">
+                <li>
+                    <a routerLink="/users/profile">{{(currentUser$ | async)?.username ?? 'N/A'}}'s profile</a>
+                </li>
+    
+                <li>
+                    <a href="/users/logout" (click)="logoutHandler($event)">Logout</a>
+                </li>
+            </ng-container>
+    
+            <ng-container *ngIf="!(isLoggedIn$ | async)">
+                <li>
+                    <a routerLink="/users/sign?mode='login'">Login</a>
+                </li>
+                <li>
+                    <a routerLink="/users/sign?mode='register'">Register</a>
+                </li>
+            </ng-container>
+    
+        </ul>
+    </nav>
+    
+    <section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg" (click)="toggleNotification()">
+        {{notification}}
+    </section>
 
-            <li>
-                <a href="/users/logout" (click)="logoutHandler($event)">Logout</a>
-            </li>
-        </ng-container>
-
-        <ng-container *ngIf="!(isLoggedIn$ | async)">
-            <li>
-                <a routerLink="/users/sign?mode='login'">Login</a>
-            </li>
-            <li>
-                <a routerLink="/users/sign?mode='register'">Register</a>
-            </li>
-        </ng-container>
-
-        <li>
-            <app-theme-switch></app-theme-switch>
-        </li>
-
-    </ul>
-</nav>
-
-<section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg" (click)="toggleNotification()">
-    {{notification}}
-</section>
+</header>
