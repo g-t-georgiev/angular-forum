@@ -4,6 +4,7 @@
 
 label {
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     gap: 1em;
 }
@@ -11,8 +12,8 @@ label {
 .switch {
     --switch-width: 2em;
     --switch-height: 1em;
-    --switch-padding-block: 0;
-    --switch-padding-inline: 0;
+    --switch-padding-block: 0.1em;
+    --switch-padding-inline: 0.1em;
     width: var(--switch-width);
     height: var(--switch-height);
     padding: var(--switch-padding-block) var(--switch-padding-inline);
@@ -26,8 +27,8 @@ label {
 }
 
 .switch__thumb {
-    --switch-thumb-width: 50%;
-    --switch-thumb-height: 98%;
+    --switch-thumb-width: calc(50% - (2 * var(--switch-padding-inline)));
+    --switch-thumb-height: 100%;
     --switch-thumb-position: 0;
     display: block;
     height: var(--switch-thumb-height);
@@ -44,7 +45,7 @@ label {
 }
 
 #control:checked + .switch .switch__thumb {
-    --switch-thumb-position: calc(var(--switch-width) - (2 * var(--switch-thumb-width)));
+    --switch-thumb-position: calc(2em - var(--switch-padding-inline) - (7.5 * var(--switch-thumb-width)));
     transform: translateX(var(--switch-thumb-position));
     background-color: #0071bc;
 }
