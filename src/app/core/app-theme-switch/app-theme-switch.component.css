@@ -49,9 +49,3 @@ label {
     transform: translateX(var(--switch-thumb-position));
     background-color: #0071bc;
 }
-
-@media screen and (max-width: 578px) {}
-
-@media screen and (min-width: 579px) {}
-
-@media screen and (min-width: 1288px) {}
