@@ -3,23 +3,24 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AuthService, MessageBus, AppModeSwitchService } from './services';
+import { AuthService, MessageBus, AppThemeSwitchService } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
-import { AppModeSwitchComponent } from './app-mode-switch/app-mode-switch.component';
+import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
 
 
 @NgModule({
     declarations: [
         NavComponent,
-        AppModeSwitchComponent
+        AppThemeSwitchComponent
   ],
     imports: [
         CommonModule,
         RouterModule
     ],
     exports: [
-        NavComponent
+        NavComponent,
+        AppThemeSwitchComponent
     ]
 })
 export class CoreModule {
@@ -29,7 +30,7 @@ export class CoreModule {
             providers: [
                 AuthService,
                 MessageBus.MessageBusService,
-                AppModeSwitchService,
+                AppThemeSwitchService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: AttachCookieInterceptor,
