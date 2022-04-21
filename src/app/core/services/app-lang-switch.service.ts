@@ -12,10 +12,7 @@ export const LangOptions = {
 export class AppLangSwitchService {
 
     private _currentLang = new BehaviorSubject<string>(LangOptions.English);
-    private _preferedLang = new BehaviorSubject<string>(LangOptions.English);
-
     currentLang$: Observable<string> = this._currentLang.asObservable();
-    preferedLang$: Observable<string> = this._preferedLang.asObservable();
 
     constructor() { }
 
