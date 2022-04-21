@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppModeSwitchService } from './core/services';
+import { AppThemeSwitchService } from './core/services';
 
 @Component({
     selector: 'app-root',
@@ -8,15 +8,15 @@ import { AppModeSwitchService } from './core/services';
 })
 export class AppComponent implements OnInit, OnDestroy { 
     constructor(
-        private appModeService: AppModeSwitchService
+        private appThemeSwitchService: AppThemeSwitchService
     ) { }
 
     ngOnInit(): void {
-        this.appModeService.subscribe();
+        this.appThemeSwitchService.subscribe();
     }
 
     ngOnDestroy(): void {
-        this.appModeService.unsubscribe();
+        this.appThemeSwitchService.unsubscribe();
     }
     
 }
