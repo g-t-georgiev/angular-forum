@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AuthService, MessageBus, AppThemeSwitchService } from './services';
+import { AuthService, MessageBus, AppThemeSwitchService, AppLangSwitchService } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { NavComponent } from './nav/nav.component';
 import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
@@ -34,6 +34,7 @@ export class CoreModule {
                 AuthService,
                 MessageBus.MessageBusService,
                 AppThemeSwitchService,
+                AppLangSwitchService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: AttachCookieInterceptor,
