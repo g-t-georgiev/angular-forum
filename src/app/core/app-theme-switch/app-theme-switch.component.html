@@ -1,10 +1,13 @@
 <label>
+    <span>
+        <i class="fa-solid" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i>
+    </span>
     <input type="checkbox" id="control" [checked]="isDarkModeOn" (change)="toggleDarkMode()">
     <div class="switch">
         <span class="switch__thumb"></span>
     </div>
     <span>
-        <i class="fa-solid" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i>
+        <!-- <i class="fa-solid" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i> -->
         Dark Mode: {{ isDarkModeOn ? 'On' : 'Off' }}
     </span>
 </label>
