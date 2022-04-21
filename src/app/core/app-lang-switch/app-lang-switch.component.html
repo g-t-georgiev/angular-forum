@@ -1,1 +1,12 @@
-<p>app-lang-switch works!</p>
+<label>
+    <span>
+        Language: {{currentLang$ | async | uppercase}}
+    </span>
+    <select #selectLang (change)="toggle(selectLang)">
+        <option 
+            *ngFor="let lang of langList | keyvalue"
+            [attr.value]="lang.value"
+            [selected]="lang.value === (preferedLang$ | async)"
+        >{{lang.key}}</option>
+    </select>
+</label>
