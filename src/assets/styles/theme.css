@@ -1,6 +1,8 @@
 :root {
     --background-color: #dee4e7;
     --text-color: #222;
+    --anchor-color: #1a73e8;
+    --anchor-opacity: .75;
 }
 
 body {
@@ -21,12 +23,12 @@ body {
 }
 
 a {
-    color: #1a73e8;
-    opacity: .75;
+    color: var(--anchor-color);
+    opacity: var(--anchor-opacity);
 }
 
 a:hover {
-    opacity: 1;
+   --anchor-opacity: 1;
 }
 
 /*
