@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AppLangSwitchService, LangOptions } from '../services';
+import { AppLangSwitchService, AppThemeSwitchService, LangOptions } from '../services';
 
 
 
@@ -15,15 +15,16 @@ export class AppLangSwitchComponent {
     readonly langList = LangOptions;
 
     currentLang$!: Observable<string>;
-    preferedLang$!: Observable<string>;
+    isDarkModeOn$!: Observable<boolean>;
 
     constructor(
-        private appLangSwitchService: AppLangSwitchService
+        private appLangSwitchService: AppLangSwitchService,
+        private appThemeSwitchService: AppThemeSwitchService
     ) { }
 
     ngOnInit(): void {
         this.currentLang$ = this.appLangSwitchService.currentLang$;
-        this.preferedLang$ = this.appLangSwitchService.preferedLang$;
+        this.isDarkModeOn$ = this.appThemeSwitchService.isDarkModeOn$;
     }
 
     toggle(el: HTMLSelectElement): void {
