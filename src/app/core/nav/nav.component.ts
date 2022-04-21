@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { IUser } from '../models';
-import { AppModeSwitchService, AuthService, MessageBus } from '../services';
+import { AuthService, MessageBus } from '../services';
 
 @Component({
     selector: 'app-nav',
