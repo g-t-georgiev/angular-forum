@@ -1,4 +1,6 @@
 :host {
+    --header-padding: 2em;
+
     --nav-font-size: 1.5em;
     --nav-logo-font-size: 2em;
     --nav-padding: 1em;
@@ -17,6 +19,7 @@
 
 header {
     display: flow-root;
+    padding: var(--header-padding);
 }
 
 .user-preferences {
