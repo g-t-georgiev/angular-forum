@@ -1,6 +1,4 @@
 :host {
-    display: flow-root;
-
     --nav-font-size: 1.5em;
     --nav-logo-font-size: 2em;
     --nav-padding: 1em;
@@ -15,6 +13,10 @@
     --notification-border-style: solid;
     --notification-margin-block-start: .5em;
     --notification-margin-inline-end: 1em;
+}
+
+header {
+    display: flow-root;
 }
 
 nav {
