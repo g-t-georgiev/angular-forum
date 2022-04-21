@@ -20,11 +20,12 @@ label {
 .switch {
     --switch-width: 2em;
     --switch-height: 1em;
-    --switch-padding-block: 0.1em;
+    --switch-padding-block: 0.125em;
     --switch-padding-inline: 0.1em;
     width: var(--switch-width);
     height: var(--switch-height);
-    padding: var(--switch-padding-block) var(--switch-padding-inline);
+    padding-block: var(--switch-padding-block);
+    padding-inline: var(--switch-padding-inline);
     border-radius: 30% / 70%;
     transition: all .2s linear;
 
@@ -57,3 +58,9 @@ label {
     transform: translateX(var(--switch-thumb-position));
     background-color: #0071bc;
 }
+
+@media screen and (min-width: 1288px) {
+    .switch {
+        --switch-padding-block: 0.225em 0.125em;
+    }
+} 
