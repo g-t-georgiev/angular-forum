@@ -9,13 +9,16 @@ export class ClearNotificationDirective implements OnInit, OnDestroy {
     @Input('clearNotification') clearInterval!: string;
 
     private timerId: any;
-    private _clearInterval: number = isNaN(+this.clearInterval) ? 5e3 : +this.clearInterval;
+    private _clearInterval!: number;
 
     constructor(
         private messageBusService: MessageBus.MessageBusService
     ) { }
 
     ngOnInit(): void {
+        this._clearInterval = isNaN(+this.clearInterval) ? 5e3 : +this.clearInterval * 1e3;
+        // console.log(this._clearInterval);
+
         this.timerId = setTimeout(
             () => {
                 this.messageBusService.clear();

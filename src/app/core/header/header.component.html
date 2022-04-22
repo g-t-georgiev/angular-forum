@@ -37,11 +37,18 @@
     </nav>
 
     <!-- <div id="notification-generator">
-        <input #text type="text">
-        <select #type>
+        <label for="notificaiton-text">Notification text: </label>
+        <input #text type="text" id="notification-text">
+        <br>
+        <label for="notification-type">Notification type: </label>
+        <select #type id="notification-type">
             <option value="error">Error</option>
             <option value="success">Success</option>
         </select>
+        <br>
+        <label for="notification-clear-interval">Clear after (seconds): </label>
+        <input #interval type="number" min="1" max="10" id="notification-clear-interval">
+        <br>
         <button (click)="showNotification(text.value, type.value)">Show Notification</button>
     </div> -->
     
