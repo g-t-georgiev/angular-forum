@@ -6,8 +6,10 @@ import { MessageBus } from '../services';
 })
 export class ClearNotificationDirective implements OnInit, OnDestroy {
 
+    @Input('clearNotification') clearInterval!: string;
+
     private timerId: any;
-    @Input('clearNotification') clearInterval: number = 5e3;
+    private _clearInterval: number = isNaN(+this.clearInterval) ? 5e3 : +this.clearInterval;
 
     constructor(
         private messageBusService: MessageBus.MessageBusService
@@ -18,7 +20,7 @@ export class ClearNotificationDirective implements OnInit, OnDestroy {
             () => {
                 this.messageBusService.clear();
             },
-            this.clearInterval
+            this._clearInterval
         );
     }
 
