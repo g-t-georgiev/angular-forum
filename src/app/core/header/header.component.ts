@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     private respMsgSubscription!: Subscription;
     private timerId!: ReturnType<typeof setTimeout>;
-    private isLogginOut: boolean = false;
+    private isLoggingOut: boolean = false;
 
     notification: string = '';
     isErrorMsg: boolean = false;
@@ -59,22 +59,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
     logoutHandler(ev: Event) {
         ev.preventDefault();
 
-        if (this.isLogginOut) {
+        if (this.isLoggingOut) {
             return;
         }
 
-        this.isLogginOut = true;
+        this.isLoggingOut = true;
 
         this.authService.logout$()
             .subscribe({
                 complete: () => {
-                    this.isLogginOut = false;
+                    this.isLoggingOut = false;
                     this.messageService.notify({ text: 'Logout successful!', type: 'success' });
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
                     console.log(err);
-                    this.isLogginOut = false;
+                    this.isLoggingOut = false;
                     this.messageService.notify({ text: err.error.message ?? 'Something went wrong.', type: 'error' });
                     this.router.navigate(['/home']);
                 }
