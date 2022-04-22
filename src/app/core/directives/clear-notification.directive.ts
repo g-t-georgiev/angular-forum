@@ -7,7 +7,7 @@ import { MessageBus } from '../services';
 export class ClearNotificationDirective implements OnInit, OnDestroy {
 
     private timerId: any;
-    @Input('clearNotification') private clearInterval: number = 5e3;
+    @Input('clearNotification') clearInterval: number = 5e3;
 
     constructor(
         private messageBusService: MessageBus.MessageBusService
