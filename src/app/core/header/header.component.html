@@ -41,7 +41,9 @@
         class="notification" 
         [class.success]="notification.type === notificationTypes.Success" 
         [class.error]="notification.type === notificationTypes.Error" 
-        (click)="toggleNotification()">
+        clearNotification
+        (click)="toggleNotification()"
+    >
         {{notification.text}}
     </section>
 
