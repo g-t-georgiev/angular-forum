@@ -1,7 +1,7 @@
 <label>
 
     <ng-template *ngIf="visible" #current let-isDarkModeOn [ngTemplateOutlet]="current" [ngTemplateOutletContext]="{ $implicit: isDarkModeOn$ | async }">
-        <input type="checkbox" id="control" [checked]="isDarkModeOn" (change)="toggleDarkMode(isDarkModeOn)">
+        <input type="checkbox" id="control" [checked]="isDarkModeOn" (change)="toggleDarkMode(!isDarkModeOn)">
         <div class="switch">
             <i class="fa-solid switch__thumb" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i>
             <span class="switch__text">

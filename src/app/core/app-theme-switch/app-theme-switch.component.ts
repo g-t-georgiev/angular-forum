@@ -21,7 +21,7 @@ export class AppThemeSwitchComponent implements OnInit {
     }
 
     toggleDarkMode(value: boolean) {
-        this.appThemeSwitchService.toggle(!value);
+        this.appThemeSwitchService.toggle(value);
     }
 
 }
