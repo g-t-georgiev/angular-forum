@@ -1,8 +1,7 @@
 :host {
     --font-size: .95em;
     --font-weight: 400;
-
-    --base-unit: 14px;
+    --color: currentColor;
 }
 
 #control {
@@ -20,36 +19,52 @@ label {
 }
 
 .switch {
-    --width: calc(4 * var(--base-unit));
-    --block-padding: calc(.225 * var(--base-unit));;
-    --inline-padding: calc(.125 * var(--base-unit));
+    --switch-block-padding: .25em;
+    --switch-inline-padding: .35em;
+    --switch-flex-direction: row;
 
-    color: var(--color, inherit);
     background-color: transparent;
-    font-size: calc(var(--base-unit) * 1.15);
 
     border-width: .1em;
     border-style: solid;
     border-color: var(--color);
 
-    border-radius: 40% / 60%;
-    
-    width: var(--width);
-    padding-block: var(--block-padding);
-    padding-inline: var(--inline-padding);
+    border-radius: 30% / 70%;
+
+    display: flex;
+    align-items: center;
+    flex-direction: var(--switch-flex-direction);
+    gap: 1em;
+
+    padding-block: var(--switch-block-padding);
+    padding-inline: var(--switch-inline-padding);
+
+    transition: all .2s linear;
+}
+
+.switch__text {
+    color: var(--color);
+    font-size: calc(var(--font-size) * .95);
 
     transition: all .2s linear;
 }
 
 .switch__thumb {
-    --path: 0;
-    --rotation: 0;
+    --switch-thumb-rotation: 0;
+
+    color: var(--color);
+    font-size: calc(var(--base-unit) * 1.15);
+
     backface-visibility: visible;
-    transform: translateX(var(--path)) rotateY(var(--rotation));
-    transition: transform .2s linear;
+    transform: rotateY(var(--switch-thumb-rotation));
+
+    transition: all .2s linear;
+}
+
+#control:checked + .switch {
+    --switch-flex-direction: row-reverse;
 }
 
 #control:checked + .switch .switch__thumb {
-    --path: calc((var(--width) / 1.65) - var(--inline-padding));
-    --rotation: 180deg;
+    --switch-thumb-rotation: 180deg;
 }
