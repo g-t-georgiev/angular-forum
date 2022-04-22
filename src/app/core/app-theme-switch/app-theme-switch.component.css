@@ -1,6 +1,8 @@
 :host {
     --font-size: .95em;
     --font-weight: 400;
+
+    --base-unit: 14px;
 }
 
 #control {
@@ -18,49 +20,36 @@ label {
 }
 
 .switch {
-    --switch-width: 2em;
-    --switch-height: 1em;
-    --switch-padding-block: 0.125em;
-    --switch-padding-inline: 0.1em;
-    width: var(--switch-width);
-    height: var(--switch-height);
-    padding-block: var(--switch-padding-block);
-    padding-inline: var(--switch-padding-inline);
-    border-radius: 30% / 70%;
-    transition: all .2s linear;
+    --width: calc(4 * var(--base-unit));
+    --block-padding: calc(.225 * var(--base-unit));;
+    --inline-padding: calc(.125 * var(--base-unit));
 
-    background-color: #cfd8dc;
+    color: var(--color, inherit);
+    background-color: transparent;
+    font-size: calc(var(--base-unit) * 1.3);
+
+    border-width: .1em;
     border-style: solid;
-    border-width: 1px;
-    border-color: #90a4ae;
+    border-color: var(--color);
+
+    border-radius: 40% / 60%;
+    
+    width: var(--width);
+    padding-block: var(--block-padding);
+    padding-inline: var(--inline-padding);
+
+    transition: all .2s linear;
 }
 
 .switch__thumb {
-    --switch-thumb-width: calc(50% - (2 * var(--switch-padding-inline)));
-    --switch-thumb-height: 100%;
-    --switch-thumb-position: 0;
-    display: block;
-    height: var(--switch-thumb-height);
-    width: var(--switch-thumb-width);
-    border-radius: 50%;
-    transition: all .2s linear;
-
-    background-color: #90a4ae;
-}
-
-#control:checked + .switch {
-    background-color: #b0bec5;
-    border-color: #0071bc;
+    --path: 0;
+    --rotation: 0;
+    backface-visibility: visible;
+    transform: translateX(var(--path)) rotateY(var(--rotation));
+    transition: transform .2s linear;
 }
 
 #control:checked + .switch .switch__thumb {
-    --switch-thumb-position: calc(2em - var(--switch-padding-inline) - (7.5 * var(--switch-thumb-width)));
-    transform: translateX(var(--switch-thumb-position));
-    background-color: #0071bc;
+    --path: calc((var(--width) / 2) + var(--inline-padding));
+    --rotation: 180deg;
 }
-
-@media screen and (min-width: 1288px) {
-    .switch {
-        --switch-padding-block: 0.225em 0.125em;
-    }
-} 
