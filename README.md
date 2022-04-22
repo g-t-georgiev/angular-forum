@@ -23,11 +23,11 @@ Public parts are "home page", where people can read and search all themes availa
 ├── src
 │   ├── app
 │   │   ├── core
-│   │   │   ├── nav
-│   │   │   │   ├── nav.component.css
-│   │   │   │   ├── nav.component.html
-│   │   │   │   ├── nav.component.spec.ts
-│   │   │   │   ├── nav.component.ts
+│   │   │   ├── header
+│   │   │   │   ├── header.component.css
+│   │   │   │   ├── header.component.html
+│   │   │   │   ├── header.component.spec.ts
+│   │   │   │   ├── header.component.ts
 │   │   │   ├── app-theme-switch
 │   │   │   │   ├── app-theme-switch.component.css
 │   │   │   │   ├── app-theme-switch.component.html
@@ -60,6 +60,10 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── base.ts
 │   │   │   │   ├── user.ts
+│   │   │   ├── directives
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── clear-notification.directive.spec.ts
+│   │   │   │   ├── clear-notification.directive.ts
 │   │   │   ├── core.module.ts
 │   │   ├── shared
 │   │   │   ├── shared.module.ts
