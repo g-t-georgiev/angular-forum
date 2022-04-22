@@ -36,7 +36,14 @@
         </ul>
     </nav>
 
-    <button (click)="showNotification('Test message', 'error')">Show Notification</button>
+    <!-- <div id="notification-generator">
+        <input #text type="text">
+        <select #type>
+            <option value="error">Error</option>
+            <option value="success">Success</option>
+        </select>
+        <button (click)="showNotification(text.value, type.value)">Show Notification</button>
+    </div> -->
     
     <section 
         *ngIf="(notification$ | async) as notification" 

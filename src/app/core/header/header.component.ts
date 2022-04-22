@@ -63,8 +63,8 @@ export class HeaderComponent implements OnInit {
         this.messageBusService.clear();
     }
 
-    showNotification(text: string, type: 'error' | 'success') {
-        this.messageBusService.notify({ text, type });
-    }
+    // showNotification(text: string, type: any) {
+    //     this.messageBusService.notify({ text, type });
+    // }
 
 }
