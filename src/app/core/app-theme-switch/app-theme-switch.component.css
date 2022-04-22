@@ -26,7 +26,7 @@ label {
 
     color: var(--color, inherit);
     background-color: transparent;
-    font-size: calc(var(--base-unit) * 1.3);
+    font-size: calc(var(--base-unit) * 1.15);
 
     border-width: .1em;
     border-style: solid;
@@ -50,6 +50,6 @@ label {
 }
 
 #control:checked + .switch .switch__thumb {
-    --path: calc((var(--width) / 2) + var(--inline-padding));
+    --path: calc((var(--width) / 1.65) - var(--inline-padding));
     --rotation: 180deg;
 }
