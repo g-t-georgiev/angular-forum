@@ -8,13 +8,15 @@ import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } 
 import { HeaderComponent } from './header/header.component';
 import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
 import { AppLangSwitchComponent } from './app-lang-switch/app-lang-switch.component';
+import { ClearNotificationDirective } from './directives/clear-notification.directive';
 
 
 @NgModule({
     declarations: [
         HeaderComponent,
         AppThemeSwitchComponent,
-        AppLangSwitchComponent
+        AppLangSwitchComponent,
+        ClearNotificationDirective
   ],
     imports: [
         CommonModule,
@@ -23,7 +25,8 @@ import { AppLangSwitchComponent } from './app-lang-switch/app-lang-switch.compon
     exports: [
         HeaderComponent,
         AppThemeSwitchComponent,
-        AppLangSwitchComponent
+        AppLangSwitchComponent,
+        ClearNotificationDirective
     ]
 })
 export class CoreModule {
