@@ -6,10 +6,10 @@ import { AuthService, MessageBus } from '../services';
 
 @Component({
     selector: 'app-header',
-    templateUrl: './nav.component.html',
-    styleUrls: ['./nav.component.css']
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css']
 })
-export class NavComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
     private respMsgSubscription!: Subscription;
     private timerId!: ReturnType<typeof setTimeout>;

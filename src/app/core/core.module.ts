@@ -5,14 +5,14 @@ import { RouterModule } from '@angular/router';
 
 import { AuthService, MessageBus, AppThemeSwitchService, AppLangSwitchService } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
-import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
 import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
 import { AppLangSwitchComponent } from './app-lang-switch/app-lang-switch.component';
 
 
 @NgModule({
     declarations: [
-        NavComponent,
+        HeaderComponent,
         AppThemeSwitchComponent,
         AppLangSwitchComponent
   ],
@@ -21,7 +21,7 @@ import { AppLangSwitchComponent } from './app-lang-switch/app-lang-switch.compon
         RouterModule
     ],
     exports: [
-        NavComponent,
+        HeaderComponent,
         AppThemeSwitchComponent,
         AppLangSwitchComponent
     ]
