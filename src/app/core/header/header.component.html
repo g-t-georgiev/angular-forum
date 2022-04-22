@@ -35,6 +35,8 @@
     
         </ul>
     </nav>
+
+    <button (click)="showNotification('Test message', 'error')">Show Notification</button>
     
     <section 
         *ngIf="(notification$ | async) as notification" 

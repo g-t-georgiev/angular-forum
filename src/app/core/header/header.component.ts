@@ -27,11 +27,11 @@ export class HeaderComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private messageService: MessageBus.MessageBusService
+        private messageBusService: MessageBus.MessageBusService
     ) { }
 
     ngOnInit(): void {
-        this.notification$ = this.messageService.onNewMessage$;
+        this.notification$ = this.messageBusService.onNewMessage$;
     }
 
     logoutHandler(ev: Event) {
@@ -47,20 +47,24 @@ export class HeaderComponent implements OnInit {
             .subscribe({
                 complete: () => {
                     this.isLoggingOut = false;
-                    this.messageService.notify({ text: 'Logout successful!', type: 'success' });
+                    this.messageBusService.notify({ text: 'Logout successful!', type: 'success' });
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
                     console.log(err);
                     this.isLoggingOut = false;
-                    this.messageService.notify({ text: err.error.message ?? 'Something went wrong.', type: 'error' });
+                    this.messageBusService.notify({ text: err.error.message ?? 'Something went wrong.', type: 'error' });
                     this.router.navigate(['/home']);
                 }
             })
     }
 
     toggleNotification() {
-        this.messageService.clear();
+        this.messageBusService.clear();
+    }
+
+    showNotification(text: string, type: 'error' | 'success') {
+        this.messageBusService.notify({ text, type });
     }
 
 }
