@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AppThemeSwitchService } from '../services';
 
 @Component({
@@ -8,33 +7,20 @@ import { AppThemeSwitchService } from '../services';
     templateUrl: './app-theme-switch.component.html',
     styleUrls: ['./app-theme-switch.component.css']
 })
-export class AppThemeSwitchComponent implements OnInit, OnDestroy {
+export class AppThemeSwitchComponent implements OnInit {
 
-    private subscription!: Subscription;
-
-    isDarkModeOn: boolean = false;
+    isDarkModeOn$!: Observable<boolean>;
 
     constructor(
         private appThemeSwitchService: AppThemeSwitchService
     ) { }
 
     ngOnInit(): void {
-        this.subscription = this.appThemeSwitchService
-            .isDarkModeOn$
-            .pipe(
-                tap(
-                    value => this.isDarkModeOn = value
-                )
-            )
-            .subscribe();
+        this.isDarkModeOn$ = this.appThemeSwitchService.isDarkModeOn$;
     }
 
-    ngOnDestroy(): void {
-        this.subscription?.unsubscribe();
-    }
-
-    toggleDarkMode() {
-        this.appThemeSwitchService.toggle(!this.isDarkModeOn);
+    toggleDarkMode(value: boolean) {
+        this.appThemeSwitchService.toggle(!value);
     }
 
 }
