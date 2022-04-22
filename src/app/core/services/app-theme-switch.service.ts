@@ -20,13 +20,13 @@ export class AppThemeSwitchService {
 
     toggle(value: boolean) { 
         this._isDarkModeOn.next(value);
-        this.document.body.classList.toggle('app_theme--dark', value);
+        this.document.body.classList.toggle('app__theme--dark', value);
     }
 
     init(): void {
         const isDarkColorSchemePreferred = this.colorSchemePrefMatch(darkColorSchemePrefMq)?.matches ?? false;
         this._isDarkModeOn.next(isDarkColorSchemePreferred);
-        this.document.body.classList.toggle('app_theme--dark', isDarkColorSchemePreferred);
+        this.document.body.classList.toggle('app__theme--dark', isDarkColorSchemePreferred);
     }
 
     private colorSchemePrefMatch(colorSchemeMq: string): MediaQueryList | undefined {
@@ -35,7 +35,7 @@ export class AppThemeSwitchService {
 
     private colorSchemePrefChangeHandler(ev: MediaQueryListEvent) {
         this._isDarkModeOn.next(ev.matches);
-        this.document.body.classList.toggle('app_theme--dark', ev.matches);
+        this.document.body.classList.toggle('app__theme--dark', ev.matches);
     }
 
     private boundContextHandler = this.colorSchemePrefChangeHandler.bind(this);

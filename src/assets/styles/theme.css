@@ -10,14 +10,7 @@ body {
     color: var(--text-color);
 }
 
-/*
-.app_theme--light {
-    --background-color: #dee4e7;
-    --text-color: #222;
-}
-*/
-
-.app_theme--dark {
+.app__theme--dark {
     --background-color: #222;
     --text-color: #eceff1;
 }
@@ -30,21 +23,3 @@ a {
 a:hover {
    --anchor-opacity: 1;
 }
-
-/*
-@media (prefers-color-scheme: dark) {
-    body,
-    body.app_theme--dark {
-        --background-color: #222;
-        --text-color: #eceff1;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body,
-    body.app_theme--light {
-        --background-color: #dee4e7;
-        --text-color: #222;
-    }
-} 
-*/
