@@ -24,9 +24,9 @@ import { ClearNotificationDirective } from './directives/clear-notification.dire
     ],
     exports: [
         HeaderComponent,
-        AppThemeSwitchComponent,
-        AppLangSwitchComponent,
-        ClearNotificationDirective
+        // AppThemeSwitchComponent,
+        // AppLangSwitchComponent,
+        // ClearNotificationDirective
     ]
 })
 export class CoreModule {
