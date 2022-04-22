@@ -9,6 +9,7 @@ import { AppThemeSwitchService } from '../services';
 })
 export class AppThemeSwitchComponent implements OnInit {
 
+    readonly visible: boolean = true;
     isDarkModeOn$!: Observable<boolean>;
 
     constructor(
