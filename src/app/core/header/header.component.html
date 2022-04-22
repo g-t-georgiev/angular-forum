@@ -36,8 +36,13 @@
         </ul>
     </nav>
     
-    <section *ngIf="!!notification" class="notification" [class.success]="!isErrorMsg" [class.error]="isErrorMsg" (click)="toggleNotification()">
-        {{notification}}
+    <section 
+        *ngIf="(notification$ | async) as notification" 
+        class="notification" 
+        [class.success]="notification.type === notificationTypes.Success" 
+        [class.error]="notification.type === notificationTypes.Error" 
+        (click)="toggleNotification()">
+        {{notification.text}}
     </section>
 
 </header>

@@ -9,14 +9,12 @@ import { AuthService, MessageBus } from '../services';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
 
-    private respMsgSubscription!: Subscription;
-    private timerId!: ReturnType<typeof setTimeout>;
     private isLoggingOut: boolean = false;
 
-    notification: string = '';
-    isErrorMsg: boolean = false;
+    readonly notificationTypes = MessageBus.MessageTypes;
+    notification$!: Observable<MessageBus.Message | undefined>;
 
     get currentUser$(): Observable<IUser | undefined> {
         return this.authService.currentUser$;
@@ -33,27 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.respMsgSubscription = this.messageService.onNewMessage$
-            .subscribe({
-                next: (message) => {
-                    this.notification = message?.text ?? '';
-                    this.isErrorMsg = message?.type === MessageBus.MessageTypes.Error;
-
-                    if (this.notification) {
-                        this.timerId = setTimeout(() => {
-                            this.messageService.clear();
-                        }, 5e3);
-                    }
-                }
-            });
-    }
-
-    ngOnDestroy(): void {
-        this.respMsgSubscription?.unsubscribe();
-
-        if (this.timerId) {
-            clearTimeout(this.timerId);
-        }
+        this.notification$ = this.messageService.onNewMessage$;
     }
 
     logoutHandler(ev: Event) {
