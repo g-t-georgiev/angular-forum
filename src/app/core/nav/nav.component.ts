@@ -5,7 +5,7 @@ import { IUser } from '../models';
 import { AuthService, MessageBus } from '../services';
 
 @Component({
-    selector: 'app-nav',
+    selector: 'app-header',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css']
 })
