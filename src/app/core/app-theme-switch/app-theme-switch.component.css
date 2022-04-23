@@ -1,70 +1,36 @@
 :host {
     --font-size: .95em;
-    --font-weight: 400;
     --color: currentColor;
-}
 
-#control {
-    display: none;
-}
-
-label {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     gap: 1em;
 
     font-size: var(--font-size);
-    font-weight: var(--font-weight);
-}
-
-.switch {
-    --switch-block-padding: .25em;
-    --switch-inline-padding: .35em;
-    --switch-flex-direction: row;
-
-    background-color: transparent;
-
-    border-width: .1em;
-    border-style: solid;
-    border-color: var(--color);
-
-    border-radius: 30% / 70%;
-
-    display: flex;
-    align-items: center;
-    flex-direction: var(--switch-flex-direction);
-    gap: 1em;
-
-    padding-block: var(--switch-block-padding);
-    padding-inline: var(--switch-inline-padding);
-
-    transition: all .2s linear;
-}
-
-.switch__text {
     color: var(--color);
-    font-size: calc(var(--font-size) * .95);
-
-    transition: all .2s linear;
 }
 
-.switch__thumb {
-    --switch-thumb-rotation: 0;
+label {
+    padding-block: .5em;
+    padding-inline: .5em;
 
-    color: var(--color);
-    font-size: calc(var(--base-unit) * 1.15);
-
-    backface-visibility: visible;
-    transform: rotateY(var(--switch-thumb-rotation));
-
-    transition: all .2s linear;
+    font-size: calc(var(--font-size) * 1.2);
 }
 
-#control:checked + .switch {
-    --switch-flex-direction: row-reverse;
+.checkbox {
+    display: none;
 }
 
-#control:checked + .switch .switch__thumb {
-    --switch-thumb-rotation: 180deg;
+.checkbox + i {
+    cursor: pointer;
+}
+
+.checkbox + i.fa-display {
+    --opacity: .5;
+    opacity: var(--opacity);
+}
+
+.checkbox:checked + i.fa-display {
+    --opacity: 1;
 }
