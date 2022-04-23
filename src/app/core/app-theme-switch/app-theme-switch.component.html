@@ -1,14 +1,15 @@
-<label>
-
-    <ng-template *ngIf="visible" #current let-isDarkModeOn [ngTemplateOutlet]="current" [ngTemplateOutletContext]="{ $implicit: isDarkModeOn$ | async }">
-        <input type="checkbox" id="control" [checked]="isDarkModeOn" (change)="toggleDarkMode(!isDarkModeOn)">
-        <div class="switch">
-            <i class="fa-solid switch__thumb" [class.fa-moon]="isDarkModeOn" [class.fa-circle]="!isDarkModeOn"></i>
-            <span class="switch__text">
-                {{ isDarkModeOn ? 'On' : 'Off' }}
-            </span>
-        </div>
-        Dark Mode
-    </ng-template>
-
-</label>
+<ng-template *ngIf="visible" #control let-darkModeOn [ngTemplateOutlet]="control"
+    [ngTemplateOutletContext]="{ $implicit: isDarkModeOn$ | async }">
+    <label>
+        <ng-template *ngIf="visible" #preference let-preferenceOn [ngTemplateOutlet]="preference"
+            [ngTemplateOutletContext]="{ $implicit: isSystemPreferenceOn$ | async}">
+            <input type="checkbox" class="checkbox" [checked]="preferenceOn"
+                (change)="toggleThemePreference(!preferenceOn)">
+            <i class="fa-solid fa-display"></i>
+        </ng-template>
+    </label>
+    <label>
+        <input type="checkbox" class="checkbox" [checked]="darkModeOn" (change)="toggleThemeMode(!darkModeOn)">
+        <i class="fa-solid fa-circle-half-stroke"></i>
+    </label>
+</ng-template>
