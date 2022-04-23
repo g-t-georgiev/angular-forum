@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';;
 import { AppThemeSwitchService } from './core/services';
 
 @Component({
@@ -6,17 +6,24 @@ import { AppThemeSwitchService } from './core/services';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy { 
+export class AppComponent implements OnInit {
+
+    private unsubscribe!: () => void;
+
     constructor(
         private appThemeSwitchService: AppThemeSwitchService
-    ) { }
+    ) {}
 
     ngOnInit(): void {
-        this.appThemeSwitchService.subscribe();
+        this.appThemeSwitchService.isSystemPreferenceOn$
+            .subscribe(
+                (isSystemPreferenceOn) => {
+                    if (isSystemPreferenceOn) {
+                        this.unsubscribe = this.appThemeSwitchService.sync();
+                    } else {
+                        this.unsubscribe?.();
+                    }
+                }
+            )
     }
-
-    ngOnDestroy(): void {
-        this.appThemeSwitchService.unsubscribe();
-    }
-    
 }
