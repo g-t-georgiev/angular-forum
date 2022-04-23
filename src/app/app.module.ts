@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { AuthService, AppThemeSwitchService } from './core/services';
+import { AuthService } from './core/services';
 
 @NgModule({
   declarations: [
@@ -24,14 +24,6 @@ import { AuthService, AppThemeSwitchService } from './core/services';
               return () => authService.authenticate$();
           },
           deps: [AuthService],
-          multi: true
-      },
-      {
-          provide: APP_INITIALIZER,
-          useFactory: (appThemeSwitchService: AppThemeSwitchService) => {
-              return () => appThemeSwitchService.init();
-          },
-          deps: [AppThemeSwitchService],
           multi: true
       }
   ],
