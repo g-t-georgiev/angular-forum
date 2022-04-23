@@ -11,6 +11,7 @@ export class AppThemeSwitchComponent implements OnInit {
 
     readonly visible: boolean = true;
     isDarkModeOn$!: Observable<boolean>;
+    isSystemPreferenceOn$!: Observable<boolean>;
 
     constructor(
         private appThemeSwitchService: AppThemeSwitchService
@@ -18,10 +19,15 @@ export class AppThemeSwitchComponent implements OnInit {
 
     ngOnInit(): void {
         this.isDarkModeOn$ = this.appThemeSwitchService.isDarkModeOn$;
+        this.isSystemPreferenceOn$ = this.appThemeSwitchService.isSystemPreferenceOn$;
     }
 
-    toggleDarkMode(value: boolean) {
-        this.appThemeSwitchService.toggle(value);
+    toggleThemeMode(value: boolean) {
+        this.appThemeSwitchService.toggleDarkMode(value);
+    }
+
+    toggleThemePreference(value: boolean) {
+        this.appThemeSwitchService.toggleThemePreference(value);
     }
 
 }
