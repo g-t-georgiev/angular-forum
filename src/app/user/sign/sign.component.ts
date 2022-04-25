@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-sign',
@@ -10,30 +11,29 @@ import { Subscription } from 'rxjs';
 export class SignComponent implements OnInit, OnDestroy {
 
     private urlChange: Subscription | undefined;
-    currentUrl: string = '';
+    private currentUrl: ActivatedRoute[];
+    private urlFragment$: Observable<UrlSegment[]>;
+
+    currentEndpoint: string | undefined;
 
     constructor(
-        private router: Router
-    ) { }
+        private router: ActivatedRoute
+    ) {
+        this.currentUrl = this.router.pathFromRoot;
+        this.urlFragment$ = this.currentUrl[2].url;
+    }
 
     ngOnInit(): void {
-        this.urlChange = this.router
-            .events
-            .subscribe({
-                next: (ev: Event) => {
-                    if (ev instanceof NavigationStart) {
-                        this.currentUrl = 'Url change detected.'
+        this.urlChange = this.urlFragment$
+            .pipe(
+                tap(
+                    ([ urlFragment ]: UrlSegment[]) => {
+                        // console.log(urlFragment);
+                        this.currentEndpoint = urlFragment.path;
                     }
-
-                    if (ev instanceof NavigationEnd) {
-                        this.currentUrl = ev.url;
-                    }
-
-                    if (ev instanceof NavigationError) {
-                        this.currentUrl = 'Error occured during navigation.';
-                    }
-                }
-            })
+                )
+            )
+            .subscribe();
     }
 
     ngOnDestroy(): void {
