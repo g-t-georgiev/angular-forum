@@ -1,6 +1,5 @@
 :host {
     --font-weight: 400;
-    --font-size: .95em;
     --color: inherit;
 
     --select-padding-block: .25em;
@@ -10,7 +9,7 @@
     --select-border-color: var(--color);
 
     --option-background-color: #f5f5f5;
-    --option-font-size: calc(var(--font-size) * 1.2);
+    --option-font-size: 1.2em;
     --option-color: var(--color);
 }
 
@@ -25,7 +24,6 @@ label {
 
 select {
     font-weight: var(--font-weight);
-    font-size: var(--font-size);
     padding-block: var(--select-padding-block);
     padding-inline: var(--select-padding-inline);
     background-color: var(--select-background-color);
