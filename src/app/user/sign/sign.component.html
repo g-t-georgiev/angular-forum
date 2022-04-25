@@ -4,49 +4,65 @@
 
 <ng-template #registerForm>
 
-    <section>
-
+    <section class="sidebar">
+        <h2 class="sidebar__title">Welcome back!</h2>
+        <p class="sidebar__body">
+            If you already have an account, proceed with logging in.
+        </p>
+        <a routerLink="/users/login" class="sidebar__button">Sign In</a>
     </section>
 
-    <form class="form">
+    <form class="form register">
 
         <section class="form__header">
             <h3 class="form__title">Create account</h3>
             <div class="form__options">
-               <span></span>
+               <div class="form__option">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-google"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
+               </div>
                 or use your email for registration:
             </div>
         </section>
 
         <div class="form__row">
-            <label>
-                <span></span>
-                <input type="text" name="username" placeholder="Name">
+            <label for="username">
+                <span>
+                    <i class="fa-solid fa-user"></i>
+                </span>
             </label>
+            <input type="text" name="username" id="username" placeholder="Name">
         </div>
 
         <div class="form__row">
-            <label>
-                <span></span>
-                <input type="email" name="email" placeholder="Email">
+            <label for="email">
+                <span>
+                    <i class="fa-solid fa-envelope"></i>
+                </span>
             </label>
+            <input type="email" name="email" id="email" placeholder="Email">
         </div>
 
         <div class="form__row">
-            <label>
-                <span></span>
-                <input type="password" name="password" placeholder="Password">
+            <label for="password">
+                <span>
+                    <i class="fa-solid fa-lock"></i>
+                </span>
             </label>
+            <input type="password" name="password" id="password" placeholder="Password">
         </div>
 
         <div class="form__row">
-            <label>
-                <span></span>
-                <input type="password" name="repeatPassword" placeholder="Repeat password">
+            <label for="repeatPassword">
+                <span>
+                    <i class="fa-solid fa-lock"></i>
+                </span>
             </label>
+            <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password">
         </div>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" class="form__button">Sign Up</button>
 
     </form>
 
@@ -54,8 +70,12 @@
 
 <ng-template #loginForm>
 
-    <form></form>
+    <form class="form login">
 
-    <section></section>
+    </form>
+
+    <section>
+
+    </section>
 
 </ng-template>
