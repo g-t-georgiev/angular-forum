@@ -14,7 +14,8 @@ export class SignComponent implements OnInit, OnDestroy {
     private currentUrl: ActivatedRoute[];
     private urlFragment$: Observable<UrlSegment[]>;
 
-    currentEndpoint: string | undefined;
+    private currentEndpoint!: string;
+    pageMode!: string;
 
     constructor(
         private router: ActivatedRoute
@@ -30,6 +31,7 @@ export class SignComponent implements OnInit, OnDestroy {
                     ([ urlFragment ]: UrlSegment[]) => {
                         // console.log(urlFragment);
                         this.currentEndpoint = urlFragment.path;
+                        this.pageMode = this.currentEndpoint;
                     }
                 )
             )
