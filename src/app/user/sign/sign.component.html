@@ -1,3 +1,59 @@
-<p>
-    In {{pageMode}}
-</p>
+<ng-container *ngIf="pageMode === 'login'" [ngTemplateOutlet]="loginForm"></ng-container>
+<ng-container *ngIf="pageMode === 'register'" [ngTemplateOutlet]="registerForm"></ng-container>
+
+
+<ng-template #registerForm>
+
+    <section>
+
+    </section>
+
+    <form class="form">
+
+        <section class="form__header">
+            <h3 class="form__title">Create account</h3>
+            <div class="form__options">
+               <span></span>
+                or use your email for registration:
+            </div>
+        </section>
+
+        <div>
+            <label>
+                <span></span>
+                <input type="text" name="username" placeholder="Name">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <span></span>
+                <input type="email" name="email" placeholder="Email">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <span></span>
+                <input type="password" name="password" placeholder="Password">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                <span></span>
+                <input type="password" name="repeatPassword" placeholder="Repeat password">
+            </label>
+        </div>
+
+    </form>
+
+</ng-template>
+
+<ng-template #loginForm>
+
+    <form></form>
+
+    <section></section>
+
+</ng-template>
