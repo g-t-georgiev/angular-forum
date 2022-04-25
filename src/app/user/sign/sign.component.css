@@ -131,9 +131,9 @@
     font-weight: var(--form-title-weight);
 }
 
-.login .form__title {
+/* .login .form__title {
 
-}
+} */
 
 .form__options {
     color: var(--form-options-text-color);
