@@ -13,8 +13,8 @@ export class SignComponent implements OnInit, OnDestroy {
     private urlChange: Subscription | undefined;
     private currentUrl: ActivatedRoute[];
     private urlFragment$: Observable<UrlSegment[]>;
-
     private currentEndpoint!: string;
+    
     pageMode!: string;
 
     constructor(
