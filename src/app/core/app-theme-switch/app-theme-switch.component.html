@@ -1,15 +1,17 @@
-<ng-template *ngIf="visible" #control let-darkModeOn [ngTemplateOutlet]="control"
-    [ngTemplateOutletContext]="{ $implicit: isDarkModeOn$ | async }">
-    <label>
-        <ng-template *ngIf="visible" #preference let-preferenceOn [ngTemplateOutlet]="preference"
-            [ngTemplateOutletContext]="{ $implicit: isSystemPreferenceOn$ | async}">
-            <input type="checkbox" class="checkbox" [checked]="preferenceOn"
-                (change)="toggleThemePreference(!preferenceOn)">
-            <i class="fa-solid fa-display"></i>
-        </ng-template>
-    </label>
-    <label title="Toggle color mode">
+<ng-container [ngTemplateOutlet]="themeMode" [ngTemplateOutletContext]="{ $implicit: (isDarkModeOn$ | async)}"></ng-container>
+<ng-container [ngTemplateOutlet]="colorPreference" [ngTemplateOutletContext]="{ $implicit: (isSystemPreferenceOn$ | async)}"></ng-container>
+
+<ng-template #themeMode let-darkModeOn>
+    <label [title]="darkModeOn ? 'Toggle color mode light' : 'Toggle color mode dark'">
         <input type="checkbox" class="checkbox" [checked]="darkModeOn" (change)="toggleThemeMode(!darkModeOn)">
         <i class="fa-solid fa-circle-half-stroke"></i>
+    </label>
+</ng-template>
+
+<ng-template #colorPreference let-preferenceOn>
+    <label [title]="preferenceOn ? 'Turn system color preference off' : 'Turn system color preference on'">
+        <input type="checkbox" class="checkbox" [checked]="preferenceOn"
+        (change)="toggleThemePreference(!preferenceOn)">
+        <i class="fa-solid fa-display"></i>
     </label>
 </ng-template>
