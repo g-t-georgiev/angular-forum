@@ -31,6 +31,7 @@ select {
     border-style: solid;
     border-width: var(--select-border-width);
     border-color: var(--select-border-color);
+    cursor: pointer;
 }
 
 select:focus {
