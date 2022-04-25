@@ -1,5 +1,10 @@
 <label>
-    <select #selectLang (change)="toggle(selectLang)" [class.theme--dark]="isDarkModeOn$ | async">
+    <select 
+        #selectLang 
+        (change)="toggle(selectLang)" 
+        [class.theme--dark]="isDarkModeOn$ | async"
+        title="Toggle language settings"
+    >
         <option 
             *ngFor="let lang of langList | keyvalue"
             [attr.value]="lang.value"
