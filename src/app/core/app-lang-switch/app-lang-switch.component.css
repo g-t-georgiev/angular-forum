@@ -16,7 +16,6 @@
 label {
     display: flex;
     align-items: center;
-    gap: 1em;
 
     font-weight: var(--font-weight);
     font-size: var(--font-size);
