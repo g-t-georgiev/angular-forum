@@ -171,6 +171,7 @@
     --form-label-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
 
     --form-input-placeholder-opacity: .53;
+    --form-input-text-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
 
     width: var(--form-row-width);
     padding-block: var(--form-row-padding-block);
@@ -214,7 +215,7 @@
     font-weight: inherit;
     color: currentColor;
 
-    font-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+    font-size: var(--form-input-text-size);
 }
 
 .form__row input::placeholder {
