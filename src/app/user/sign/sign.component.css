@@ -8,7 +8,7 @@
     --sidebar-text-size: 1.15em;
     --sidebar-line-height: 2;
 
-    --sidebar-title-size: clamp(1.5em, 35vw, 3em);
+    --sidebar-title-size: clamp(1.5em, 3vw, 3em);
     --sidebar-title-color: white;
     --sidebar-title-weight: 700;
 
@@ -25,7 +25,7 @@
 
     --form-header-width: 100%;
 
-    --form-title-size: clamp(1.5em, 35vw, 3em);
+    --form-title-size: clamp(2em, 3vw, 4em);
     --form-title-color: #3aaf9f;
     --form-title-weight: 700;
 
@@ -126,10 +126,6 @@
     font-size: var(--form-title-size);
     font-weight: var(--form-title-weight);
 }
-
-/* .login .form__title {
-
-} */
 
 .form__row {
     --input-padding-block: .5em;
