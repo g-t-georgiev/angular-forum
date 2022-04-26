@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
-import { Subscription, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 import { AppThemeSwitchService } from '../../core/services'
 
@@ -10,11 +9,10 @@ import { AppThemeSwitchService } from '../../core/services'
     templateUrl: './sign.component.html',
     styleUrls: ['./sign.component.css']
 })
-export class SignComponent implements OnInit, OnDestroy {
+export class SignComponent {
 
-    private urlChange: Subscription | undefined;
     private currentUrl: ActivatedRoute[];
-    private urlFragment$: Observable<UrlSegment[]>;
+    private urlSegment: UrlSegment;
     private currentEndpoint!: string;
     
     pageMode!: string;
@@ -25,27 +23,10 @@ export class SignComponent implements OnInit, OnDestroy {
         private themeService: AppThemeSwitchService
     ) {
         this.currentUrl = this.router.pathFromRoot;
-        this.urlFragment$ = this.currentUrl[2].url;
-    }
-
-    ngOnInit(): void {
+        [ this.urlSegment ] = this.currentUrl[2].snapshot.url;
+        this.currentEndpoint = this.urlSegment.path;
+        this.pageMode = this.currentEndpoint;
         this.isDarkModeOn$ = this.themeService.isDarkModeOn$;
-        
-        this.urlChange = this.urlFragment$
-            .pipe(
-                tap(
-                    ([ urlFragment ]: UrlSegment[]) => {
-                        // console.log(urlFragment);
-                        this.currentEndpoint = urlFragment.path;
-                        this.pageMode = this.currentEndpoint;
-                    }
-                )
-            )
-            .subscribe();
-    }
-
-    ngOnDestroy(): void {
-        this.urlChange?.unsubscribe();
     }
 
 }
