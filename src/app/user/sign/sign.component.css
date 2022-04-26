@@ -4,7 +4,7 @@
 
     --sidebar-width: 30%;
     --sidebar-padding: 2em;
-    --sidebar-text-color: white;
+    --sidebar-text-color-lightness: 100%;
     --sidebar-text-size: 1.15em;
     --sidebar-line-height: 1.5;
 
@@ -35,6 +35,10 @@
     --gradient-angle: 45deg;
 }
 
+.sidebar.darkmode {
+    --sidebar-text-color-lightness: 90%;
+}
+
 .sidebar {
     --sidebar-body-width: 70%;
 
@@ -45,7 +49,7 @@
     width: var(--sidebar-width);
     padding: var(--sidebar-padding);
     background: linear-gradient(var(--gradient-angle), var(--gradient-color-primary), var(--gradient-color-secondary) 50%);
-    color: var(--sidebar-text-color);
+    color: hsl(0, 0%, var(--sidebar-text-color-lightness));
     font-size: var(--sidebar-text-size);
     line-height: var(--sidebar-line-height);
     text-align: center;
@@ -70,10 +74,10 @@
     padding-block: var(--sidebar-button-padding-block);
     padding-inline: var(--sidebar-button-padding-inline);
 
-    border: .1em solid var(--sidebar-text-color);
+    border: .1em solid hsl(0, 0%, var(--sidebar-text-color-lightness));
 
     background-color: transparent;
-    color: var(--sidebar-text-color);
+    color: hsl(0, 0%, var(--sidebar-text-color-lightness));
     font-size: calc(var(--sidebar-text-size) * .75em);
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -90,6 +94,8 @@
     --lightness: 33%;
     --form-background-color: #333;
     --form-shadow-color: transparent;
+
+    --form-button-text-color-lightness: 90%;
 }
 
 .form.register {
@@ -119,7 +125,7 @@
     --form-row-padding-inline: 1em;
 
     --form-button-text-size: calc(var(--form-row-text-size) * .9);
-    --form-button-text-color: white;
+    --form-button-text-color-lightness: 100%;
     --form-button-padding-block: 1em;
     --form-button-padding-inline: 1.15em;
     --form-button-width: 50%;
@@ -225,7 +231,7 @@
     border-radius: var(--form-button-border-radius);
 
     background-color: var(--form-button-background-color);
-    color: var(--form-button-text-color);
+    color: hsl(0, 0%, var(--form-button-text-color-lightness));
     font-size: var(--form-button-text-size);
     text-transform: uppercase;
     letter-spacing: .1em;
