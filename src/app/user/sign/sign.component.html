@@ -4,15 +4,14 @@
 
 <ng-template #registerForm>
 
-    <section class="sidebar">
-        <h2 class="sidebar__title">Welcome back!</h2>
+    <section class="sidebar register">
         <p class="sidebar__body">
-            If you already have an account, proceed with logging in.
+            If you are already registered, proceed with logging in to your account.
         </p>
         <a routerLink="/users/login" class="sidebar__button">Sign In</a>
     </section>
 
-    <form class="form register">
+    <form class="form register" [class.darkmode]="isDarkModeOn$ | async">
 
         <section class="form__header">
             <h3 class="form__title">Create account</h3>
@@ -20,7 +19,7 @@
 
         <div class="form__row">
             <label for="username">
-                <span>
+                <span class="form__label">
                     <i class="fa-solid fa-user"></i>
                 </span>
             </label>
@@ -29,7 +28,7 @@
 
         <div class="form__row">
             <label for="email">
-                <span>
+                <span class="form__label">
                     <i class="fa-solid fa-envelope"></i>
                 </span>
             </label>
@@ -38,7 +37,7 @@
 
         <div class="form__row">
             <label for="password">
-                <span>
+                <span class="form__label">
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
@@ -47,14 +46,17 @@
 
         <div class="form__row">
             <label for="repeatPassword">
-                <span>
+                <span class="form__label">
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
             <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password">
         </div>
 
-        <button type="submit" class="form__button">Sign Up</button>
+        <button type="submit" class="form__button">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            Sign Up
+        </button>
 
     </form>
 
@@ -62,12 +64,42 @@
 
 <ng-template #loginForm>
 
-    <form class="form login">
+    <form class="form login" [class.darkmode]="isDarkModeOn$ | async">
+
+        <section class="form__header">
+            <h3 class="form__title">Login</h3>
+        </section>
+
+        <div class="form__row">
+            <label for="email">
+                <span class="form__label">
+                    <i class="fa-solid fa-envelope"></i>
+                </span>
+            </label>
+            <input type="email" name="email" id="email" placeholder="Email">
+        </div>
+
+        <div class="form__row">
+            <label for="password">
+                <span class="form__label">
+                    <i class="fa-solid fa-lock"></i>
+                </span>
+            </label>
+            <input type="password" name="password" id="password" placeholder="Password">
+        </div>
+
+        <button type="submit" class="form__button">
+            <i class="fa-solid fa-user-lock"></i>
+            Sign In
+        </button>
 
     </form>
 
-    <section>
-
+    <section class="sidebar login">
+        <p class="sidebar__body">
+            If you are new here, create an account and join our community.
+        </p>
+        <a routerLink="/users/register" class="sidebar__button">Sign Up</a>
     </section>
 
 </ng-template>
