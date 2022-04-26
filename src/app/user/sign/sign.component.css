@@ -1,44 +1,17 @@
 :host {
     --font-family: inherit;
+    --lightness: 46%;
 
     --sidebar-width: 30%;
     --sidebar-padding: 2em;
-    --sidebar-background-color: linear-gradient(-45deg, #3aaf9f, #34756d 50%);
     --sidebar-text-color: white;
     --sidebar-text-size: 1.15em;
-    --sidebar-line-height: 2;
-
-    --sidebar-title-size: clamp(1.5em, 3vw, 3em);
-    --sidebar-title-color: white;
-    --sidebar-title-weight: 700;
-
-    --sidebar-body-width: 70%;
-
-    --sidebar-button-padding-block: .5em;
-    --sidebar-button-padding-inline: 1em;
-    --sidebar-button-width: 50%;
+    --sidebar-line-height: 1.5;
 
     --form-width: 30%;
     --form-padding: 2em;
     --form-background-color: transparent;
-    --form-text-color: currentColor;
-
-    --form-header-width: 100%;
-
-    --form-title-size: clamp(2em, 3vw, 4em);
-    --form-title-color: #3aaf9f;
-    --form-title-weight: 700;
-
-    --form-row-text-size: 1.25em;
-    --form-row-width: 80%;
-    --form-row-padding-block: 1em;
-    --form-row-padding-inline: 1em;
-
-    --form-button-background-color: #3aaf9f;
-    --form-button-text-color: white;
-    --form-button-padding-block: 1em;
-    --form-button-padding-inline: 1.15em;
-    --form-button-width: 50%;
+    --form-shadow-color: rgba(0, 0, 0, .15);
 
     width: 90%;
     margin-block: 1em;
@@ -50,29 +23,38 @@
     justify-content: center;
 }
 
+.sidebar.register {
+    --gradient-color-primary: #3aaf9f;
+    --gradient-color-secondary: #34756d;
+    --gradient-angle: -45deg;
+}
+
+.sidebar.login {
+    --gradient-color-primary: #b03b83;
+    --gradient-color-secondary: #753455;
+    --gradient-angle: 45deg;
+}
+
 .sidebar {
+    --sidebar-body-width: 70%;
+
+    --sidebar-button-padding-block: .5em;
+    --sidebar-button-padding-inline: 1em;
+    --sidebar-button-width: 50%;
+
     width: var(--sidebar-width);
     padding: var(--sidebar-padding);
-    background: var(--sidebar-background-color);
+    background: linear-gradient(var(--gradient-angle), var(--gradient-color-primary), var(--gradient-color-secondary) 50%);
     color: var(--sidebar-text-color);
     font-size: var(--sidebar-text-size);
     line-height: var(--sidebar-line-height);
     text-align: center;
-    border-radius: 5px 0 0 5px;
-    box-shadow: -5px 5px 15px rgba(0, 0, 0, .15);
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2em;
-}
-
-.sidebar__title {
-    color: var(--sidebar-title-color);
-    font-size: var(--sidebar-title-size);
-    font-weight: var(--sidebar-title-weight);
-    line-height: calc(var(--sidebar-line-height) * .5);
 }
 
 .sidebar__body {
@@ -101,7 +83,44 @@
     text-decoration: none;
 }
 
+.form.darkmode {
+    --lightness: 33%;
+    --form-background-color: #333;
+    --form-shadow-color: transparent;
+}
+
+.form.register {
+    --form-title-color: hsl(172, 50%, var(--lightness));
+    --form-button-background-color: hsl(172, 50%, var(--lightness));
+    --form-shadow-offset-x: 5px;
+}
+
+.form.login {
+    --form-title-color: hsl(323, 50%, var(--lightness));
+    --form-button-background-color: hsl(323, 50%, var(--lightness));
+    --form-shadow-offset-x: -5px;
+}
+
 .form {
+    --form-header-width: 80%;
+    --form-header-padding-block: .5em;
+    --form-header-padding-inline: 1em;
+    --form-header-text-align: left;
+
+    --form-title-size: clamp(2em, 2vw, 4em);
+    --form-title-weight: 700;
+
+    --form-row-text-size: 1.25em;
+    --form-row-width: 80%;
+    --form-row-padding-block: .5em;
+    --form-row-padding-inline: 1em;
+
+    --form-button-text-size: calc(var(--form-row-text-size) * .9);
+    --form-button-text-color: white;
+    --form-button-padding-block: 1em;
+    --form-button-padding-inline: 1.15em;
+    --form-button-width: 50%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,13 +131,14 @@
     padding: var(--form-padding);
     background-color: var(--form-background-color);
     color: var(--form-text-color);
-    border-radius: 0 5px 5px 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
+    box-shadow: var(--form-shadow-offset-x) 5px 15px var(--form-shadow-color);
 }
 
 .form__header {
     width: var(--form-header-width);
-    text-align: center;
+    padding-block: var(--form-header-padding-block);
+    padding-inline: var(--form-header-padding-inline);
+    text-align: var(--form-header-text-align);
 }
 
 .form__title {
@@ -127,12 +147,21 @@
     font-weight: var(--form-title-weight);
 }
 
+.darkmode .form__row {
+    --form-label-lightness: 46%;
+    --form-input-placeholder-opacity: .13;
+}
+
 .form__row {
     --input-padding-block: .5em;
     --input-padding-inline: 1em;
     --input-background-color: transparent;
 
-    --label-text-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+    --form-label-lightness: 0%;
+    --form-label-color: hsla(0, 0%, var(--form-label-lightness));
+    --form-label-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+
+    --form-input-placeholder-opacity: .53;
 
     width: var(--form-row-width);
     padding-block: var(--form-row-padding-block);
@@ -152,13 +181,12 @@
     margin-block-end: calc(var(--form-row-padding-block) * 2);
 }
 
-.form__row span {
-    font-size: var(--label-text-size);
+.form__label {
+    font-size: var(--form-label-size);
+    color: var(--form-label-color);
 }
 
 .form__row input {
-    font-size: inherit;
-
     width: 100%;
     padding-inline: var(--input-padding-inline);
     padding-block: var(--input-padding-block);
@@ -171,24 +199,31 @@
     outline: none;
 }
 
-.for__row input,
-.for__row input::placeholder {
+.form__row input,
+.form__row input::placeholder {
     font-family: inherit;
     font-weight: inherit;
-    color: inherit;
+    color: currentColor;
 
-    font-size: var(--form-row-text-size);
+    font-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+}
+
+.form__row input::placeholder {
+    opacity: var(--form-input-placeholder-opacity);
 }
 
 .form__button {
+    align-self: flex-end;
+
     width: var(--form-button-width);
     padding-block: var(--form-button-padding-block);
     padding-inline: var(--form-button-padding-inline);
     border: none;
+    border-radius: var(--form-button-border-radius);
 
     background-color: var(--form-button-background-color);
     color: var(--form-button-text-color);
-    font-size: calc(var(--form-row-text-size) * .95em);
+    font-size: var(--form-button-text-size);
     text-transform: uppercase;
     letter-spacing: .1em;
 
