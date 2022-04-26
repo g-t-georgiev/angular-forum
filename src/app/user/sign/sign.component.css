@@ -62,8 +62,10 @@
 }
 
 .sidebar__button {
+    /* Override <a> opacity property value */
     opacity: 1;
 
+    /* Selector specific styles */
     width: var(--sidebar-button-width);
     padding-block: var(--sidebar-button-padding-block);
     padding-inline: var(--sidebar-button-padding-inline);
@@ -80,6 +82,7 @@
 }
 
 .sidebar__button:hover {
+    /* Override <a> hover state text decoration property value */
     text-decoration: none;
 }
 
