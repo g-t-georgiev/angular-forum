@@ -4,7 +4,7 @@
 
 <ng-template #registerForm>
 
-    <section class="sidebar register">
+    <section class="sidebar register" [class.darkmode]="isDarkModeOn$ | async">
         <p class="sidebar__body">
             If you are already registered, proceed with logging in to your account.
         </p>
@@ -95,7 +95,7 @@
 
     </form>
 
-    <section class="sidebar login">
+    <section class="sidebar login" [class.darkmode]="isDarkModeOn$ | async">
         <p class="sidebar__body">
             If you are new here, create an account and join our community.
         </p>
