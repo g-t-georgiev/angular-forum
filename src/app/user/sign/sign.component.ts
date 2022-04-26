@@ -3,6 +3,8 @@ import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { AppThemeSwitchService } from '../../core/services'
+
 @Component({
     selector: 'app-sign',
     templateUrl: './sign.component.html',
@@ -16,15 +18,19 @@ export class SignComponent implements OnInit, OnDestroy {
     private currentEndpoint!: string;
     
     pageMode!: string;
+    isDarkModeOn$!: Observable<boolean>
 
     constructor(
-        private router: ActivatedRoute
+        private router: ActivatedRoute,
+        private themeService: AppThemeSwitchService
     ) {
         this.currentUrl = this.router.pathFromRoot;
         this.urlFragment$ = this.currentUrl[2].url;
     }
 
     ngOnInit(): void {
+        this.isDarkModeOn$ = this.themeService.isDarkModeOn$;
+        
         this.urlChange = this.urlFragment$
             .pipe(
                 tap(
