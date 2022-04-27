@@ -115,15 +115,15 @@
     --form-title-size: clamp(2rem, 2vw, 4rem);
     --form-title-weight: 700;
 
-    --form-row-text-size: 1.25rem;
+    --form-row-text-size: 1.15rem;
     --form-row-width: 80%;
     --form-row-padding-block: .5rem;
     --form-row-padding-inline: 1rem;
 
-    --form-button-text-size: calc(var(--form-row-text-size) * .9);
+    --form-button-text-size: calc(var(--form-row-text-size) * .85);
     --form-button-text-color-lightness: 100%;
-    --form-button-padding-block: 1rem;
-    --form-button-padding-inline: 1.15rem;
+    --form-button-padding-block: .5rem;
+    --form-button-padding-inline: 1rem;
     --form-button-width: 50%;
 
     display: flex;
@@ -164,10 +164,10 @@
 
     --form-label-lightness: 0%;
     --form-label-color: hsla(0, 0%, var(--form-label-lightness));
-    --form-label-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+    --form-label-size: calc(var(--form-row-text-size) * .85);
 
     --form-input-placeholder-opacity: .53;
-    --form-input-text-size: calc(var(--form-row-text-size) * (2 * var(--input-padding-block)));
+    --form-input-text-size: inherit;
 
     width: var(--form-row-width);
     padding-block: var(--form-row-padding-block);
@@ -219,13 +219,14 @@
 }
 
 .form__button {
+    --form-button-icon-size: calc(var(--form-button-text-size) * .85);
+
     align-self: flex-end;
 
     width: var(--form-button-width);
     padding-block: var(--form-button-padding-block);
     padding-inline: var(--form-button-padding-inline);
-    border: none;
-    border-radius: var(--form-button-border-radius);
+    border: .1rem solid var(--form-button-background-color);
 
     background-color: var(--form-button-background-color);
     color: hsl(0, 0%, var(--form-button-text-color-lightness));
@@ -234,4 +235,8 @@
     letter-spacing: .1rem;
 
     cursor: pointer;
+}
+
+.form__button i {
+    font-size: var(--form-button-icon-size);
 }
