@@ -4,21 +4,52 @@
     --nav-font-size: 1.5rem;
     --nav-logo-font-size: 2rem;
     --nav-padding: 1rem;
-    --nav-border-size: 1px;
+    --nav-border-size: .1rem;
     --nav-border-color: currentColor;
     --nav-border-style: solid;
 
-    --notification-float: right;
     --notification-font-size: 1.2rem;
-    --notification-padding: 1rem;
-    --notification-border-width: 1px;
+    --notification-controls-offset: .5rem;
+    --notification-padding: calc(
+        1.5rem + 
+        (2 * var(--notification-controls-offset))
+    );
+    --notification-border-width: .1rem;
     --notification-border-style: solid;
-    --notification-margin-block-start: .5rem;
-    --notification-margin-inline-end: 1rem;
+    --notification-margin-block: calc(
+        3rem +
+        (2 * var(--notification-controls-offset))
+    );
+    --notification-margin-inline: 1rem;
+
+    --header-size-X: calc(
+        var(--header-padding) +
+        var(--nav-border-size) +
+        var(--nav-padding)
+    );
+
+    --header-size-Y: calc(
+        (2 * var(--header-padding)) + 
+        (2 * var(--nav-padding)) + 
+        var(--nav-logo-font-size) + 
+        var(--nav-border-size)
+    );
+
+    --notification-size-X: calc(
+        var(--notification-margin-inline) +
+        var(--notification-border-width) +
+        var(--notification-padding)
+    );
+    
+    --notification-size-Y: calc(
+        var(--notification-margin-block) +
+        (2 * var(--nav-padding)) + 
+        (2 * var(--notification-border-width)) + 
+        var(--notification-font-size)
+    );
 }
 
 header {
-    display: flow-root;
     padding: var(--header-padding);
 }
 
@@ -62,14 +93,28 @@ nav a {
 
 .notification {
     --notification-background-opacity: .2;
+    --notification-offset-top: calc(
+        var(--header-size-Y) - 
+        var(--notification-margin-block)
+    );
 
-    float: var(--notification-float);
+    --notification-offset-right: calc(
+        var(--header-size-X) +
+        var(--notification-size-X) - 
+        (4 * var(--notification-margin-inline))
+    );
+
+    position: fixed;
+
+    right: calc(
+        var(--notification-offset-right) * 1
+    );
+
     font-size: var(--notification-font-size);
+
     padding: var(--notification-padding);
     border-width: var(--notification-border-width);
     border-style: var(--notification-border-style);
-    margin-block-start: var(--notification-margin-block-start);
-    margin-inline-end: var(--notification-margin-inline-end);
 }
 
 .notification:hover {
@@ -93,4 +138,17 @@ nav a {
     border-color: var(--notification-success-color);
     background-color: var(--notification-success-background-color);
     color: var(--notification-success-color);
+}
+
+.notification__controls {
+    position: absolute;
+    top: var(--notification-controls-offset);
+    right: var(--notification-controls-offset);
+
+    display: flex;
+    gap: 1rem;
+
+    font-size: calc(
+        var(--notification-font-size) * .9
+    );
 }
