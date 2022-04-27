@@ -1,20 +1,20 @@
 :host {
-    --header-padding: 2em;
+    --header-padding: 2rem;
 
-    --nav-font-size: 1.5em;
-    --nav-logo-font-size: 2em;
-    --nav-padding: 1em;
+    --nav-font-size: 1.5rem;
+    --nav-logo-font-size: 2rem;
+    --nav-padding: 1rem;
     --nav-border-size: 1px;
     --nav-border-color: currentColor;
     --nav-border-style: solid;
 
     --notification-float: right;
-    --notification-font-size: 1.2em;
-    --notification-padding: 1em;
+    --notification-font-size: 1.2rem;
+    --notification-padding: 1rem;
     --notification-border-width: 1px;
     --notification-border-style: solid;
-    --notification-margin-block-start: .5em;
-    --notification-margin-inline-end: 1em;
+    --notification-margin-block-start: .5rem;
+    --notification-margin-inline-end: 1rem;
 }
 
 header {
@@ -27,10 +27,10 @@ header {
     /* justify-content: flex-end; */
     flex-wrap: wrap;
     align-items: center;
-    gap: 2em;
+    gap: 2rem;
 
-    padding-inline: 1em;
-    padding-block-end: 2em;
+    padding-inline: 1rem;
+    padding-block-end: 2rem;
 }
 
 nav {
