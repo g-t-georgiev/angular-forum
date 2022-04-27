@@ -1,4 +1,4 @@
-import { Directive, OnInit, OnDestroy, Input } from '@angular/core';
+import { Directive, OnInit, OnDestroy } from '@angular/core';
 import { MessageBus } from '../services';
 
 @Directive({
@@ -6,24 +6,21 @@ import { MessageBus } from '../services';
 })
 export class ClearNotificationDirective implements OnInit, OnDestroy {
 
-    @Input('clearNotification') clearInterval!: string;
-
     private timerId: any;
-    private _clearInterval!: number;
+    private clearInterval: number;
 
     constructor(
         private messageBusService: MessageBus.MessageBusService
-    ) { }
+    ) {
+        this.clearInterval = 5e3;
+    }
 
     ngOnInit(): void {
-        this._clearInterval = isNaN(+this.clearInterval) ? 5e3 : +this.clearInterval * 1e3;
-        // console.log(this._clearInterval);
-
         this.timerId = setTimeout(
             () => {
                 this.messageBusService.clear();
             },
-            this._clearInterval
+            this.clearInterval
         );
     }
 
