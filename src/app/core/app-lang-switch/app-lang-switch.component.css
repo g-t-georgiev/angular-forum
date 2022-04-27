@@ -2,14 +2,14 @@
     --font-weight: 400;
     --color: inherit;
 
-    --select-padding-block: .25em;
-    --select-padding-inline: .5em;
+    --select-padding-block: .25rem;
+    --select-padding-inline: .5rem;
     --select-background-color: transparent;
-    --select-border-width: .025em;
+    --select-border-width: .05rem;
     --select-border-color: var(--color);
 
     --option-background-color: #f5f5f5;
-    --option-font-size: 1.2em;
+    --option-font-size: 1.2rem;
     --option-color: var(--color);
 }
 
