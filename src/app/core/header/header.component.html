@@ -46,21 +46,22 @@
             <option value="success">Success</option>
         </select>
         <br>
-        <label for="notification-clear-interval">Clear after (seconds): </label>
-        <input #interval type="number" min="1" max="10" id="notification-clear-interval">
-        <br>
         <button (click)="showNotification(text.value, type.value)">Show Notification</button>
     </div> -->
     
     <section 
-        *ngIf="(notification$ | async) as notification" 
+        *ngFor="let notification of (notification$ | async); let i = index" 
         class="notification" 
         [class.success]="notification.type === notificationTypes.Success" 
         [class.error]="notification.type === notificationTypes.Error" 
+        [ngStyle]="{ top: calcNotificationsOffset(i) }"
         clearNotification
-        (click)="toggleNotification()"
     >
         {{notification.text}}
+        <span class="notification__controls">
+            <i class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
+            <i class="fa-solid fa-xmark" (click)="dismiss()"></i>
+        </span>
     </section>
 
 </header>
