@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
     private isLoggingOut: boolean = false;
 
     readonly notificationTypes = MessageBus.MessageTypes;
-    notification$!: Observable<MessageBus.Message | undefined>;
+    notification$!: Observable<MessageBus.Message[] | []>;
 
     get currentUser$(): Observable<IUser | undefined> {
         return this.authService.currentUser$;
@@ -59,12 +59,28 @@ export class HeaderComponent implements OnInit {
             })
     }
 
-    toggleNotification() {
+    private __notificationOffsetTopCSSVarName: string = 'var(--notification-offset-top)';
+    private __notificationSizeYCSSVarName: string = 'var(--notification-size-Y)';
+    calcNotificationsOffset(index: number): string {
+        return `
+            calc(${this.__notificationOffsetTopCSSVarName} + (${this.__notificationSizeYCSSVarName} * ${(index + 1)}))
+        `.trim();
+    }
+
+    pin(index: number) {
+        this.messageBusService.pin(index);
+    }
+
+    dismiss() {
         this.messageBusService.clear();
     }
 
-    // showNotification(text: string, type: any) {
-    //     this.messageBusService.notify({ text, type });
-    // }
+    showNotification(text: string, type: string) {
+        const notification = {
+            text: text,
+            type: type as 'error' | 'success'
+        };
+        this.messageBusService.notify(notification);
+    }
 
 }
