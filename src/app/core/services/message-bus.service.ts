@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 
 
@@ -18,16 +18,35 @@ export class MessageBusService {
 
     constructor() { }
 
-    private messageQueue = new Subject<Message | undefined>();
+    private messageQueue: Message[] | [] = [];
 
-    onNewMessage$: Observable<Message | undefined> = this.messageQueue.asObservable();
+    onNewMessage$: Observable<Message[] | []> = of(this.messageQueue);
 
-    notify(message: Message): void {
-        this.messageQueue.next(message);
+    private filterMessagesByIndex(index: number): Message[] | [] {
+        return this.messageQueue.filter(
+            (_: Message, i: number) => {
+                return i !== index;
+            }
+        );
     }
 
-    clear(): void {
-        this.messageQueue.next(undefined);
+    private addNewMessage(...messages: Message[]): Message[] {
+        return [
+            ...this.messageQueue,
+            ...messages
+        ];
+    }
+
+    notify(...messages: Message[]): void {
+        this.messageQueue = this.addNewMessage(...messages);
+    }
+
+    clear(index?: number): void {
+        if (index) {
+            this.messageQueue = this.filterMessagesByIndex(index);
+        }
+
+        this.messageQueue = [];
     }
 
 }
