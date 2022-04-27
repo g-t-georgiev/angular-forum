@@ -2,7 +2,6 @@
     --background-color: #dee4e7;
     --text-color: #222;
     --anchor-color: #1a73e8;
-    --anchor-opacity: .75;
 }
 
 body {
@@ -17,9 +16,4 @@ body {
 
 a {
     color: var(--anchor-color);
-    opacity: var(--anchor-opacity);
-}
-
-a:hover {
-   --anchor-opacity: 1;
 }
