@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 
 
 
@@ -13,40 +13,84 @@ export type Message = {
     text: string
 }
 
+interface Descriptor {
+    enumarable?: boolean;
+    writable: boolean;
+    configurable: boolean;
+    value?: any
+}
+
 @Injectable()
 export class MessageBusService {
 
-    constructor() { }
+    private messageQueue: BehaviorSubject<Message[] | []>;
+    onNewMessage$: Observable<Message[] | []>;
 
-    private messageQueue: Message[] | [] = [];
-
-    onNewMessage$: Observable<Message[] | []> = of(this.messageQueue);
+    constructor() {
+        this.messageQueue = new BehaviorSubject<Message[] | []>([]);
+        this.onNewMessage$ = this.messageQueue.asObservable();
+    }
 
     private filterMessagesByIndex(index: number): Message[] | [] {
-        return this.messageQueue.filter(
-            (_: Message, i: number) => {
+        return this.messageQueue.value.filter(
+            (_: Message, i: number): boolean => {
                 return i !== index;
             }
         );
     }
 
+    private filterNonPinnedMessages(): Message[] | [] {
+        const pinnedMessages = this.messageQueue.value.filter(
+            (_: Message, i: number, messages: Message[]): boolean => {
+                const currentPropDescriptor: Descriptor = Object.getOwnPropertyDescriptor(
+                    messages,
+                    i.toString()
+                ) as Descriptor;
+
+                console.log(currentPropDescriptor);
+
+                return !(currentPropDescriptor.writable || currentPropDescriptor.configurable);
+            }
+        );
+
+        console.log(pinnedMessages);
+
+        return pinnedMessages;
+    }
+
     private addNewMessage(...messages: Message[]): Message[] {
+        
         return [
-            ...this.messageQueue,
+            ...this.messageQueue.value,
             ...messages
         ];
     }
 
     notify(...messages: Message[]): void {
-        this.messageQueue = this.addNewMessage(...messages);
+        this.messageQueue.next(this.addNewMessage(...messages));
     }
 
     clear(index?: number): void {
         if (index) {
-            this.messageQueue = this.filterMessagesByIndex(index);
+            this.messageQueue.next(this.filterMessagesByIndex(index));
         }
 
-        this.messageQueue = [];
+        this.messageQueue.next(this.filterNonPinnedMessages());
+    }
+
+    pin(index: number): void {
+        const arr = this.messageQueue.value;
+
+        Object.defineProperty(
+            arr, 
+            index.toString(), 
+            { 
+                writable: false, 
+                configurable: false 
+            } as Descriptor
+        );
+
+        this.messageQueue.next(arr);
     }
 
 }
