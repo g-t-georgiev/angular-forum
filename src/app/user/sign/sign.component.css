@@ -180,11 +180,11 @@
 }
 
 .form__row:first-of-type {
-    margin-block-start: calc(var(--form-row-padding-block) * 2);
+    margin-block-start: calc(var(--form-row-padding-block) * 1);
 }
 
 .form__row:last-of-type {
-    margin-block-end: calc(var(--form-row-padding-block) * 2);
+    margin-block-end: calc(var(--form-row-padding-block) * 3);
 }
 
 .form__label {
