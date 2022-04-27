@@ -67,6 +67,14 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   ├── core.module.ts
 │   │   ├── shared
 │   │   │   ├── shared.module.ts
+│   │   ├── user
+│   │   │   ├── sign
+│   │   │   │   ├── sign.component.css
+│   │   │   │   ├── sign.component.html
+│   │   │   │   ├── sign.component.spec.ts
+│   │   │   │   ├── sign.component.ts
+│   │   │   ├── user.module.ts
+│   │   │   ├── user-routing.module.ts
 │   │   ├── app.component.css
 │   │   ├── app.component.html
 │   │   ├── app.component.spec.ts
