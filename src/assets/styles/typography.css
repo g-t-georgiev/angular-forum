@@ -20,3 +20,8 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+button {
+    font-family: var(--font-family);
+    font-weight: 300;
+}
