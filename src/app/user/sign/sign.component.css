@@ -3,18 +3,18 @@
     --lightness: 46%;
 
     --sidebar-width: 30%;
-    --sidebar-padding: 2em;
+    --sidebar-padding: 2rem;
     --sidebar-text-color-lightness: 100%;
-    --sidebar-text-size: 1.15em;
+    --sidebar-text-size: 1.15rem;
     --sidebar-line-height: 1.5;
 
     --form-width: 30%;
-    --form-padding: 2em;
+    --form-padding: 2rem;
     --form-background-color: transparent;
     --form-shadow-color: rgba(0, 0, 0, .15);
 
     width: 90%;
-    margin-block: 1em;
+    margin-block: 1rem;
     margin-inline: auto;
 
     font-family: var(--font-family);
@@ -42,8 +42,8 @@
 .sidebar {
     --sidebar-body-width: 70%;
 
-    --sidebar-button-padding-block: .5em;
-    --sidebar-button-padding-inline: 1em;
+    --sidebar-button-padding-block: .5rem;
+    --sidebar-button-padding-inline: 1rem;
     --sidebar-button-width: 50%;
 
     width: var(--sidebar-width);
@@ -58,7 +58,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2em;
+    gap: 2rem;
 }
 
 .sidebar__body {
@@ -66,21 +66,17 @@
 }
 
 .sidebar__button {
-    /* Override <a> opacity property value */
-    opacity: 1;
-
-    /* Selector specific styles */
     width: var(--sidebar-button-width);
     padding-block: var(--sidebar-button-padding-block);
     padding-inline: var(--sidebar-button-padding-inline);
 
-    border: .1em solid hsl(0, 0%, var(--sidebar-text-color-lightness));
+    border: .1rem solid hsl(0, 0%, var(--sidebar-text-color-lightness));
 
     background-color: transparent;
     color: hsl(0, 0%, var(--sidebar-text-color-lightness));
     font-size: calc(var(--sidebar-text-size) * .75em);
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: .1rem;
 
     cursor: pointer;
 }
@@ -112,29 +108,29 @@
 
 .form {
     --form-header-width: 80%;
-    --form-header-padding-block: .5em;
-    --form-header-padding-inline: 1em;
+    --form-header-padding-block: .5rem;
+    --form-header-padding-inline: 1rem;
     --form-header-text-align: left;
 
-    --form-title-size: clamp(2em, 2vw, 4em);
+    --form-title-size: clamp(2rem, 2vw, 4rem);
     --form-title-weight: 700;
 
-    --form-row-text-size: 1.25em;
+    --form-row-text-size: 1.25rem;
     --form-row-width: 80%;
-    --form-row-padding-block: .5em;
-    --form-row-padding-inline: 1em;
+    --form-row-padding-block: .5rem;
+    --form-row-padding-inline: 1rem;
 
     --form-button-text-size: calc(var(--form-row-text-size) * .9);
     --form-button-text-color-lightness: 100%;
-    --form-button-padding-block: 1em;
-    --form-button-padding-inline: 1.15em;
+    --form-button-padding-block: 1rem;
+    --form-button-padding-inline: 1.15rem;
     --form-button-width: 50%;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5em;
+    gap: 1.5rem;
 
     width: var(--form-width);
     padding: var(--form-padding);
@@ -162,8 +158,8 @@
 }
 
 .form__row {
-    --input-padding-block: .5em;
-    --input-padding-inline: 1em;
+    --input-padding-block: .5rem;
+    --input-padding-inline: 1rem;
     --input-background-color: transparent;
 
     --form-label-lightness: 0%;
@@ -235,7 +231,7 @@
     color: hsl(0, 0%, var(--form-button-text-color-lightness));
     font-size: var(--form-button-text-size);
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: .1rem;
 
     cursor: pointer;
 }
