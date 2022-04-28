@@ -21,10 +21,12 @@ export class ResponseMessageInterceptor implements HttpInterceptor {
             .handle(request)
             .pipe(
                 catchError(err => {
-                        this.messageService.notify({
-                            text: err.error?.message,
-                            type: MessageBus.MessageTypes.Error
-                        });
+                        this.messageService.notify(
+                            new MessageBus.Message(
+                                MessageBus.MessageTypes.Error,
+                                err.error?.message ?? 'Something went wrong'
+                            )
+                        );
 
                         return throwError(() => err);
                     }
