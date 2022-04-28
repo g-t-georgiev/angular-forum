@@ -47,13 +47,23 @@ export class HeaderComponent implements OnInit {
             .subscribe({
                 complete: () => {
                     this.isLoggingOut = false;
-                    this.messageBusService.notify({ text: 'Logout successful!', type: 'success' });
+                    this.messageBusService.notify(
+                        new MessageBus.Message(
+                            MessageBus.MessageTypes.Success, 
+                            'Logout successful!'
+                        )
+                    );
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
                     console.log(err);
                     this.isLoggingOut = false;
-                    this.messageBusService.notify({ text: err.error.message ?? 'Something went wrong.', type: 'error' });
+                    this.messageBusService.notify(
+                        new MessageBus.Message(
+                            MessageBus.MessageTypes.Error, 
+                            err.error.message ?? 'Something went wrong.'
+                        )
+                    );
                     this.router.navigate(['/home']);
                 }
             })
@@ -71,16 +81,22 @@ export class HeaderComponent implements OnInit {
         this.messageBusService.pin(index);
     }
 
-    dismiss() {
-        this.messageBusService.clear();
+    dismiss(index: number) {
+        this.messageBusService.clear(index);
     }
 
-    showNotification(text: string, type: string) {
-        const notification = {
-            text: text,
-            type: type as 'error' | 'success'
-        };
-        this.messageBusService.notify(notification);
-    }
+    // generate notification manually
+    // for testing only
+    
+    // showNotification(text: string, type: string) {
+
+    //     const notification = new MessageBus.Message(
+    //         type === 'success' 
+    //         ? MessageBus.MessageTypes.Success
+    //         : MessageBus.MessageTypes.Error, 
+    //         text
+    //     );
+    //     this.messageBusService.notify(notification);
+    // }
 
 }
