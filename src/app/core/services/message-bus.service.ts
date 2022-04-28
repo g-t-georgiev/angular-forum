@@ -8,16 +8,14 @@ export enum MessageTypes {
     Error = 'error'
 }
 
-export type Message = {
-    type: 'success' | 'error';
-    text: string
-}
+export class Message {
 
-interface Descriptor {
-    enumarable?: boolean;
-    writable: boolean;
-    configurable: boolean;
-    value?: any
+    constructor(
+        public type: MessageTypes,
+        public text: string,
+        public pinned: boolean = false
+    ) { }
+
 }
 
 @Injectable()
@@ -32,38 +30,36 @@ export class MessageBusService {
     }
 
     private filterMessagesByIndex(index: number): Message[] | [] {
-        return this.messageQueue.value.filter(
+        const newState = this.messageQueue.value.filter(
             (_: Message, i: number): boolean => {
                 return i !== index;
             }
         );
+
+        // console.log(newState);
+
+        return newState;
     }
 
-    private filterNonPinnedMessages(): Message[] | [] {
-        const pinnedMessages = this.messageQueue.value.filter(
-            (_: Message, i: number, messages: Message[]): boolean => {
-                const currentPropDescriptor: Descriptor = Object.getOwnPropertyDescriptor(
-                    messages,
-                    i.toString()
-                ) as Descriptor;
-
-                console.log(currentPropDescriptor);
-
-                return !(currentPropDescriptor.writable || currentPropDescriptor.configurable);
+    private filterMessagesByPinnedStatus(): Message[] | [] {
+        const newState = this.messageQueue.value.filter(
+            (message: Message, i: number, messages: Message[]): boolean => {
+                return message.pinned;
             }
         );
 
-        console.log(pinnedMessages);
+        // console.log(newState);
 
-        return pinnedMessages;
+        return newState;
     }
 
     private addNewMessage(...messages: Message[]): Message[] {
-        
-        return [
+        const newState = [
             ...this.messageQueue.value,
             ...messages
         ];
+
+        return newState;
     }
 
     notify(...messages: Message[]): void {
@@ -71,26 +67,31 @@ export class MessageBusService {
     }
 
     clear(index?: number): void {
-        if (index) {
-            this.messageQueue.next(this.filterMessagesByIndex(index));
+        if (index === undefined) {
+            // if notification index not passed
+            // clear all notifications, except for pinned ones
+            this.messageQueue.next(this.filterMessagesByPinnedStatus());
+            return;
         }
 
-        this.messageQueue.next(this.filterNonPinnedMessages());
+        this.messageQueue.next(this.filterMessagesByIndex(index));
+
     }
 
     pin(index: number): void {
-        const arr = this.messageQueue.value;
+        const newState = this.messageQueue.value.map(
+            (message: Message, i: number, messages: Message[]) => {
+                if (i === index) {
+                    message.pinned = true;
+                }
 
-        Object.defineProperty(
-            arr, 
-            index.toString(), 
-            { 
-                writable: false, 
-                configurable: false 
-            } as Descriptor
+                return message;
+            }
         );
 
-        this.messageQueue.next(arr);
+        // console.log(newState);
+
+        this.messageQueue.next(newState);
     }
 
 }
