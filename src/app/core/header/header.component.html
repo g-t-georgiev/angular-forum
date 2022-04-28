@@ -36,7 +36,12 @@
         </ul>
     </nav>
 
-    <!-- <div id="notification-generator">
+    <!--
+        Notification generator UI
+    -->
+
+    <!--
+    <div id="notification-generator">
         <label for="notificaiton-text">Notification text: </label>
         <input #text type="text" id="notification-text">
         <br>
@@ -47,7 +52,8 @@
         </select>
         <br>
         <button (click)="showNotification(text.value, type.value)">Show Notification</button>
-    </div> -->
+    </div>
+    -->
     
     <section 
         *ngFor="let notification of (notification$ | async); let i = index" 
@@ -55,12 +61,13 @@
         [class.success]="notification.type === notificationTypes.Success" 
         [class.error]="notification.type === notificationTypes.Error" 
         [ngStyle]="{ top: calcNotificationsOffset(i) }"
-        clearNotification
+        [clearNotification]="notification.pinned"
+        [notificationIndex]="i"
     >
         {{notification.text}}
         <span class="notification__controls">
-            <i class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
-            <i class="fa-solid fa-xmark" (click)="dismiss()"></i>
+            <i *ngIf="!notification.pinned" class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
+            <i class="fa-solid fa-xmark" (click)="dismiss(i)"></i>
         </span>
     </section>
 
