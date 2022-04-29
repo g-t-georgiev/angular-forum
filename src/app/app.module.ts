@@ -4,8 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { UserModule } from './user/user.module';
+
 import { AppComponent } from './app.component';
 import { AuthService } from './core/services';
+
+
 
 @NgModule({
   declarations: [
