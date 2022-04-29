@@ -31,11 +31,13 @@ export class SignComponent {
     }
 
     registerSubmitHandler(registerForm: NgForm): void {
+        console.log(registerForm.status);
         if (registerForm.invalid) {
             return;
         }
 
         console.log(registerForm.value);
+        registerForm.reset();
     }
 
 }
