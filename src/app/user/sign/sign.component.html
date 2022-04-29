@@ -11,7 +11,7 @@
         <a routerLink="/users/login" class="sidebar__button">Sign In</a>
     </section>
 
-    <form class="form register" [class.darkmode]="isDarkModeOn$ | async">
+    <form class="form register" #registerForm="ngForm" [class.darkmode]="isDarkModeOn$ | async" (ngSubmit)="registerSubmitHandler(registerForm)">
 
         <section class="form__header">
             <h3 class="form__title">Create account</h3>
@@ -23,7 +23,7 @@
                     <i class="fa-solid fa-user"></i>
                 </span>
             </label>
-            <input type="text" name="username" id="username" placeholder="Name">
+            <input type="text" name="username" id="username" placeholder="Name" required minlength="4" maxlenght="30" pattern="^[A-Za-z0-9]+$" #username ngModel>
         </div>
 
         <div class="form__row">
@@ -32,7 +32,7 @@
                     <i class="fa-solid fa-envelope"></i>
                 </span>
             </label>
-            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="email" name="email" id="email" placeholder="Email" required #email ngModel>
         </div>
 
         <div class="form__row">
@@ -41,7 +41,7 @@
                     <i class="fa-regular fa-image"></i>
                 </span>
             </label>
-            <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL">
+            <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required #image ngModel>
         </div>
 
         <div class="form__row">
@@ -50,7 +50,7 @@
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
-            <input type="password" name="password" id="password" placeholder="Password">
+            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password ngModel>
         </div>
 
         <div class="form__row">
@@ -59,10 +59,10 @@
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
-            <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password">
+            <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required #repeatPassword ngModel>
         </div>
 
-        <button type="submit" class="form__button">
+        <button type="submit" class="form__button" [disabled]="registerForm.invalid">
             <i class="fa-solid fa-user"></i>
             Sign Up
         </button>
