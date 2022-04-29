@@ -5,6 +5,7 @@ import { ClearNotificationDirective, ValidateEmailDirective } from './directives
 import { ValidateUrlDirective } from './directives/validate-url.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { ValidationMessageComponent } from './validation-message/validation-message.component';
+import { MaxlengthDirective } from './directives/maxlength.directive';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { ValidationMessageComponent } from './validation-message/validation-mess
         ValidateEmailDirective,
         ValidateUrlDirective,
         PasswordMatchDirective,
-        ValidationMessageComponent
+        MaxlengthDirective,
+        ValidationMessageComponent,
     ],
     imports: [
         CommonModule
@@ -22,6 +24,7 @@ import { ValidationMessageComponent } from './validation-message/validation-mess
         ValidateEmailDirective,
         ValidateUrlDirective,
         PasswordMatchDirective,
+        MaxlengthDirective,
         ValidationMessageComponent
     ]
 })
