@@ -1,14 +1,20 @@
-import { Directive, AfterViewInit } from '@angular/core';
+import { Directive } from '@angular/core';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, Validators } from '@angular/forms';
 
 @Directive({
-    selector: '[appValidateEmail]'
+    selector: '[appValidateEmail]',
+    providers: [
+        {
+            provide: NG_VALIDATORS,
+            useExisting: ValidateEmailDirective,
+            multi: true
+        }
+    ]
 })
-export class ValidateEmailDirective implements AfterViewInit {
+export class ValidateEmailDirective implements Validator {
 
-    constructor() { }
-
-    ngAfterViewInit(): void {
-        
+    validate(control: AbstractControl): ValidationErrors | null {
+        return Validators.email(control);
     }
 
 }
