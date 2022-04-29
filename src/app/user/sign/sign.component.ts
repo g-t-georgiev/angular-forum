@@ -1,6 +1,7 @@
 import { Component, } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 import { AppThemeSwitchService } from '../../core/services'
 
@@ -27,6 +28,10 @@ export class SignComponent {
         this.currentEndpoint = this.urlSegment.path;
         this.pageMode = this.currentEndpoint;
         this.isDarkModeOn$ = this.themeService.isDarkModeOn$;
+    }
+
+    registerSubmitHandler(registerForm: NgForm): void {
+
     }
 
 }
