@@ -23,7 +23,7 @@
                     <i class="fa-solid fa-user"></i>
                 </span>
             </label>
-            <input type="text" name="username" id="username" placeholder="Name" required minlength="4" maxlenght="30" pattern="^[A-Za-z0-9]+$" #username ngModel>
+            <input type="text" name="username" id="username" placeholder="Name" required minlength="4" maxlenght="30" pattern="^[A-Za-z0-9]+$" #username="ngModel" ngModel>
         </div>
 
         <div class="form__row">
@@ -32,7 +32,7 @@
                     <i class="fa-solid fa-envelope"></i>
                 </span>
             </label>
-            <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email ngModel>
+            <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
         </div>
 
         <div class="form__row">
@@ -41,7 +41,7 @@
                     <i class="fa-regular fa-image"></i>
                 </span>
             </label>
-            <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required appValidateUrl #image ngModel>
+            <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required appValidateUrl #image="ngModel" ngModel>
         </div>
 
         <div class="form__row">
@@ -50,7 +50,7 @@
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
-            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password ngModel>
+            <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
         </div>
 
         <div class="form__row">
@@ -59,7 +59,7 @@
                     <i class="fa-solid fa-lock"></i>
                 </span>
             </label>
-            <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required #repeatPassword ngModel>
+            <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required appPasswordMatch [passwordControlRef]="password" #repeatPassword="ngModel" ngModel>
         </div>
 
         <button type="submit" class="form__button" [disabled]="registerForm.invalid">
