@@ -1,14 +1,14 @@
-import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { NgModel, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-export function passwordMatchValidator(password: AbstractControl): ValidatorFn {
+export function passwordMatchValidator(password: NgModel): ValidatorFn {
     return function (repeatPassword: AbstractControl): ValidationErrors | null {
         const { value: repeatPasswordValue } = repeatPassword ?? {};
         const { value: passwordValue } = password ?? {};
 
         if (!repeatPasswordValue || !passwordValue) return null;
 
-        const passwordValueChanges: Subscription = password.valueChanges
+        const passwordValueChanges: Subscription = password.control.valueChanges
             .subscribe({
                 next: (passwordValue) => {
                     // console.log(passwordValue);
