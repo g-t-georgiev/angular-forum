@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { AbstractControl, NgModel, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, NgModel } from '@angular/forms';
 
 import { passwordMatchValidator } from '../utils';
 
@@ -15,10 +15,18 @@ import { passwordMatchValidator } from '../utils';
 })
 export class PasswordMatchDirective implements Validator {
 
-    @Input() passwordControlRef!: NgModel;
+    private _passwordControl!: NgModel;
+
+    @Input() set passwordControl(control: NgModel) {
+        this._passwordControl = control;
+    }
+
+    get passwordControl(): NgModel {
+        return this._passwordControl;
+    }
 
     validate(control: AbstractControl): ValidationErrors | null {
-        return passwordMatchValidator(this.passwordControlRef)(control);
+        return passwordMatchValidator(this.passwordControl)(control);
     }
 
 }
