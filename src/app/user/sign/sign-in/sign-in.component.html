@@ -1,0 +1,61 @@
+<form class="form login" #loginForm="ngForm" [class.darkmode]="isDarkModeOn$ | async" (ngSubmit)="loginSubmitHandler(loginForm)">
+
+    <section class="form__header">
+        <h3 class="form__title">Login</h3>
+    </section>
+
+    <div class="form__row">
+        <label for="email">
+            <span class="form__label">
+                <i class="fa-solid fa-envelope"></i>
+            </span>
+        </label>
+        <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
+
+        <ng-container *ngIf="showErrorMessage(email)">
+
+            <app-validation-message [darkmode]="isDarkModeOn$ | async" *ngIf="email.errors && email.errors['required']">
+                Email is required.
+            </app-validation-message>
+
+            <app-validation-message [darkmode]="isDarkModeOn$ | async" *ngIf="email.errors && email.errors['email']">
+                Provided email format is invalid.
+            </app-validation-message>
+
+        </ng-container>
+    </div>
+
+    <div class="form__row">
+        <label for="password">
+            <span class="form__label">
+                <i class="fa-solid fa-lock"></i>
+            </span>
+        </label>
+        <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
+
+        <ng-container *ngIf="showErrorMessage(password)">
+
+            <app-validation-message [darkmode]="isDarkModeOn$ | async" *ngIf="password.errors && password.errors['required']">
+                Password is required.
+            </app-validation-message>
+
+            <app-validation-message [darkmode]="isDarkModeOn$ | async" *ngIf="password.errors && password.errors['minlength']">
+                Password should be at least 6 characters.
+            </app-validation-message>
+
+        </ng-container>
+    </div>
+
+    <button type="submit" class="form__button" [disabled]="loginForm.invalid" [attr.title]="loginForm.valid ? 'Submit form' : 'Please fill in all required fields.'">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i>
+        Sign In
+    </button>
+
+</form>
+
+<section class="sidebar login" [class.darkmode]="isDarkModeOn$ | async">
+    <p class="sidebar__body">
+        If you are new here, create an account and join our community.
+    </p>
+    <a routerLink="/users/register" class="sidebar__button">Sign Up</a>
+</section>
