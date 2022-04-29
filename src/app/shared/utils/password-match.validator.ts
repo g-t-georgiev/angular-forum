@@ -1,30 +1,24 @@
-import { NgModel, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { AbstractControl, ValidatorFn, ValidationErrors, NgModel } from '@angular/forms';
 
 export function passwordMatchValidator(password: NgModel): ValidatorFn {
     return function (repeatPassword: AbstractControl): ValidationErrors | null {
-        const { value: repeatPasswordValue } = repeatPassword ?? {};
-        const { value: passwordValue } = password ?? {};
+        if (!repeatPassword?.value) return null;
 
-        if (!repeatPasswordValue || !passwordValue) return null;
-
-        const passwordValueChanges: Subscription = password.control.valueChanges
+        const subscription = password.control.valueChanges
             .subscribe({
-                next: (passwordValue) => {
-                    // console.log(passwordValue);
-                    repeatPassword.updateValueAndValidity({ onlySelf: true });
-                    passwordValueChanges.unsubscribe();
+                next: () => {
+                    repeatPassword.updateValueAndValidity();
+                    subscription.unsubscribe();
                 },
                 complete: () => {
-                    passwordValueChanges.unsubscribe();
+                    subscription.unsubscribe();
                 },
-                error: (err) => {
-                    // console.log(err);
-                    passwordValueChanges.unsubscribe();
+                error: () => {
+                    subscription.unsubscribe();
                 }
             })
 
-        return passwordValue === repeatPasswordValue 
+        return password.value === repeatPassword.value
         ? null 
         : {
             passwordMismatch: true
