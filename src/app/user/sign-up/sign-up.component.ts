@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
-import { AppThemeSwitchService } from 'src/app/core/services';
+import { AppThemeSwitchService, AuthService } from 'src/app/core/services';
 import { showErrorMessage } from 'src/app/shared/utils';
 
 @Component({
@@ -16,17 +17,26 @@ export class SignUpComponent {
     isDarkModeOn$!: Observable<boolean>
 
     constructor(
-        private themeService: AppThemeSwitchService
+        private router: Router,
+        private themeService: AppThemeSwitchService,
+        private authService: AuthService
     ) {
         this.isDarkModeOn$ = themeService.isDarkModeOn$;
     }
 
     registerSubmitHandler(registerForm: NgForm): void {
-        console.log(registerForm.status);
         if (registerForm.invalid) return;
 
-        console.log(registerForm.value);
-        registerForm.reset();
+        this.authService.register$(registerForm.value)
+            .subscribe({
+                complete: () => {
+                    registerForm.reset();
+                    this.router.navigate(['/users/login']);
+                },
+                error: (err) => {
+                    // console.log(err);
+                }
+            });
     }
 
 }
