@@ -38,10 +38,10 @@ export class AuthService {
             .post<IUser>(`${apiUrl}/users/login`, userData);
     }
 
-    register$(userData: { username: string; email: string; password: string; repeatPassword: string }): Observable<IUser> {
+    register$(userData: { username: string; email: string; imageUrl: string; password: string; repeatPassword: string }): Observable<void> {
         return this
             .http
-            .post<IUser>(`${apiUrl}/users/register`, userData);
+            .post<void>(`${apiUrl}/users/register`, userData);
     }
 
     logout$(): Observable<void> {
