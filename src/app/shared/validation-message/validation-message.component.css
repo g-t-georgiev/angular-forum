@@ -1,0 +1,9 @@
+:host {
+    align-self: stretch;
+    width: 100%;
+    padding: .5rem;
+}
+
+.message {
+    color: red;
+}
