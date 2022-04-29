@@ -1,5 +1,5 @@
 import { Directive, Input, OnInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
-import { MessageBus } from '../services';
+import { MessageBus } from '../../core/services';
 
 @Directive({
     selector: '[clearNotification]'

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { ClearNotificationDirective } from './clear-notification.directive';
-import { MessageBus } from '../services';
+import { MessageBus } from '../../core/services';
 
 describe('ClearNotificationDirective', () => {
     beforeEach(() => TestBed.configureTestingModule({

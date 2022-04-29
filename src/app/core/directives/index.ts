@@ -1,1 +1,0 @@
-export * from './clear-notification.directive';
