@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { ClearNotificationDirective, ValidateEmailDirective } from './directives';
 import { ValidateUrlDirective } from './directives/validate-url.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
+import { ValidationMessageComponent } from './validation-message/validation-message.component';
 
 @NgModule({
     declarations: [
         ClearNotificationDirective,
         ValidateEmailDirective,
         ValidateUrlDirective,
-        PasswordMatchDirective
+        PasswordMatchDirective,
+        ValidationMessageComponent
     ],
     imports: [
         CommonModule
