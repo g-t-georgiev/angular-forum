@@ -1,7 +1,7 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-export function matchingPasswordsValidator(password: AbstractControl): ValidatorFn {
+export function passwordsMatchValidator(password: AbstractControl): ValidatorFn {
     return function (repeatPassword: AbstractControl): ValidationErrors | null {
         const { value: repeatPasswordValue } = repeatPassword ?? {};
         const { value: passwordValue } = password ?? {};
