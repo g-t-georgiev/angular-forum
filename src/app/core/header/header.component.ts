@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { IUser } from '../models';
+import { Observable } from 'rxjs';
+import { IUser } from '../../shared/models';
 import { AuthService, MessageBus } from '../services';
 
 @Component({

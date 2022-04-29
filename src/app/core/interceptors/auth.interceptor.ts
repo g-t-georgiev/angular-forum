@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../services';
-import { IUser } from '../models';
+import { IUser } from '../../shared/models';
 
 
 

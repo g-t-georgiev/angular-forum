@@ -3,7 +3,7 @@ import { BehaviorSubject, EMPTY, Observable } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-import { IUser } from '../models';
+import { IUser } from '../../shared/models';
 import { environment } from 'src/environments/environment';
 
 
