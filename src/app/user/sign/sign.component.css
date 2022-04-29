@@ -176,6 +176,7 @@
     font-size: var(--form-row-text-size);
 
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -188,12 +189,13 @@
 }
 
 .form__label {
+    width: 20%;
     font-size: var(--form-label-size);
     color: var(--form-label-color);
 }
 
 .form__row input {
-    width: 100%;
+    width: 80%;
     padding-inline: var(--input-padding-inline);
     padding-block: var(--input-padding-block);
     border: none;
