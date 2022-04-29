@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-validation-message',
-  templateUrl: './validation-message.component.html',
-  styleUrls: ['./validation-message.component.css']
+    selector: 'app-validation-message',
+    templateUrl: './validation-message.component.html',
+    styleUrls: ['./validation-message.component.css']
 })
-export class ValidationMessageComponent implements OnInit {
+export class ValidationMessageComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+    @Input() darkmode!: boolean | null
 
 }
