@@ -3,10 +3,11 @@ import {
     HttpRequest,
     HttpHandler,
     HttpEvent,
-    HttpInterceptor
+    HttpInterceptor,
+    HttpResponse
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { MessageBus } from '../services';
 
 @Injectable()
@@ -20,6 +21,20 @@ export class ResponseMessageInterceptor implements HttpInterceptor {
         return next
             .handle(request)
             .pipe(
+                tap(
+                    (event) => {
+                        if (event instanceof HttpResponse) {
+                            this.messageService.notify(
+                                new MessageBus.Message(
+                                    event.ok
+                                    ? MessageBus.MessageTypes.Success
+                                    : MessageBus.MessageTypes.Error,
+                                    (event.body as { message: string })?.message
+                                )
+                            );
+                        }
+                    }
+                ),
                 catchError(err => {
                         this.messageService.notify(
                             new MessageBus.Message(
