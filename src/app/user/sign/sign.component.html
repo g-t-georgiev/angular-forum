@@ -53,6 +53,18 @@
                 </span>
             </label>
             <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
+
+            <ng-container *ngIf="showErrorMessage(email)">
+
+                <app-validation-message *ngIf="email.errors && email.errors['required']">
+                    Email is required.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="email.errors && email.errors['email']">
+                    Provided email format is invalid.
+                </app-validation-message>
+
+            </ng-container>
         </div>
 
         <div class="form__row">
@@ -62,6 +74,18 @@
                 </span>
             </label>
             <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required appValidateUrl #image="ngModel" ngModel>
+
+            <ng-container *ngIf="showErrorMessage(image)">
+
+                <app-validation-message *ngIf="image.errors && image.errors['required']">
+                    Image URL is required.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="image.errors && image.errors['url']">
+                   Provided URL format is invalid.
+                </app-validation-message>
+
+            </ng-container>
         </div>
 
         <div class="form__row">
@@ -71,6 +95,18 @@
                 </span>
             </label>
             <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
+
+            <ng-container *ngIf="showErrorMessage(password)">
+
+                <app-validation-message *ngIf="password.errors && password.errors['required']">
+                    Password is required.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="password.errors && password.errors['minlength']">
+                    Password should be at least 6 characters.
+                </app-validation-message>
+
+            </ng-container>
         </div>
 
         <div class="form__row">
@@ -80,6 +116,18 @@
                 </span>
             </label>
             <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required appPasswordMatch [passwordControlRef]="password" #repeatPassword="ngModel" ngModel>
+        
+            <ng-container *ngIf="showErrorMessage(repeatPassword)">
+
+                <app-validation-message *ngIf="repeatPassword.errors && repeatPassword.errors['required']">
+                    Username is required.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="repeatPassword.errors && repeatPassword.errors['passwordMismatch']">
+                    Both passwords should match.
+                </app-validation-message>
+
+            </ng-container>
         </div>
 
         <button type="submit" class="form__button" [disabled]="registerForm.invalid" [attr.title]="registerForm.valid ? 'Submit form' : 'Please fill in all required fields.'">
