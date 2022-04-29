@@ -1,7 +1,7 @@
 import { Component, } from '@angular/core';
 import { ActivatedRoute, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 import { AppThemeSwitchService } from '../../core/services'
 
@@ -38,6 +38,10 @@ export class SignComponent {
 
         console.log(registerForm.value);
         registerForm.reset();
+    }
+
+    showErrorMessage(control: NgModel): boolean {
+        return (control.touched ?? false) && (control.invalid ?? false);
     }
 
 }
