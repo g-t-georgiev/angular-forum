@@ -27,7 +27,7 @@ export function passwordMatchValidator(password: NgModel): ValidatorFn {
         return passwordValue === repeatPasswordValue 
         ? null 
         : {
-            passwordsMismatch: true
+            passwordMismatch: true
         }
     }
 }

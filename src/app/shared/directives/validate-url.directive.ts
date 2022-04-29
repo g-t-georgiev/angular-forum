@@ -21,7 +21,7 @@ export class ValidateUrlDirective implements Validator {
         return /(?=^https?:\/\/).+/.test(value)
         ? null 
         : {
-            invalidEmail: true
+            url: true
         }
 
     }
