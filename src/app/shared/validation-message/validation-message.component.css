@@ -1,14 +1,16 @@
 :host {
     --font-size: inherit;
-    --error-color: red;
+    --error-color-saturation: 100%;
 
     align-self: stretch;
-
     width: 100%;
-    padding: .5rem;
+}
+
+.message.darkmode {
+    --error-color-saturation: 50%;
 }
 
 .message {
-    color: var(--error-color);
-    font-size: calc(var(--font-size) * .9);
+    color: hsl(0, var(--error-color-saturation), 50%);
+    font-size: calc(var(--font-size) * .95);
 }
