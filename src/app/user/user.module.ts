@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
 import { UserRoutingModule } from './user-routing.module';
 import { SignComponent } from './sign/sign.component';
 
@@ -10,7 +12,8 @@ import { SignComponent } from './sign/sign.component';
     ],
     imports: [
         CommonModule,
-        UserRoutingModule
+        UserRoutingModule,
+        FormsModule
     ],
     exports: [
         SignComponent
