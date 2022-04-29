@@ -23,7 +23,27 @@
                     <i class="fa-solid fa-user"></i>
                 </span>
             </label>
-            <input type="text" name="username" id="username" placeholder="Name" required minlength="4" maxlenght="30" pattern="^[A-Za-z0-9]+$" #username="ngModel" ngModel>
+            <input type="text" name="username" id="username" placeholder="Name" required minlength="4" maxlenght="30" pattern="(?=[A-Za-z]+)^[A-Za-z0-9]+$" #username="ngModel" ngModel>
+
+            <ng-container *ngIf="showErrorMessage(username)">
+
+                <app-validation-message *ngIf="username.errors && username.errors['required']">
+                    Username is required.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="username.errors && username.errors['minlength']">
+                    Username should be at least 4 characters.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="username.errors && username.errors['maxlength']">
+                    Username should not be more than 30 characters long.
+                </app-validation-message>
+
+                <app-validation-message *ngIf="username.errors && username.errors['pattern']">
+                    Username should consist of english letters and digits only (but not solely digits!).
+                </app-validation-message>
+
+            </ng-container>
         </div>
 
         <div class="form__row">
