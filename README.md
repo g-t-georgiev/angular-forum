@@ -56,23 +56,47 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   │   ├── app-theme-switch.service.ts
 │   │   │   │   ├── app-lang-switch.service.spec.ts
 │   │   │   │   ├── app-lang-switch.service.ts
-│   │   │   ├── models
-│   │   │   │   ├── index.ts
-│   │   │   │   ├── base.ts
-│   │   │   │   ├── user.ts
+│   │   │   ├── core.module.ts
+│   │   ├── shared
 │   │   │   ├── directives
 │   │   │   │   ├── index.ts
 │   │   │   │   ├── clear-notification.directive.spec.ts
 │   │   │   │   ├── clear-notification.directive.ts
-│   │   │   ├── core.module.ts
-│   │   ├── shared
+│   │   │   │   ├── maxlength.directive.spec.ts
+│   │   │   │   ├── maxlength.directive.ts
+│   │   │   │   ├── password-match.directive.spec.ts
+│   │   │   │   ├── password-match.directive.ts
+│   │   │   │   ├── validate-email.directive.spec.ts
+│   │   │   │   ├── validate-email.directive.ts
+│   │   │   │   ├── validate-url.directive.spec.ts
+│   │   │   │   ├── validate-url.directive.ts
+│   │   │   ├── models
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── base.ts
+│   │   │   │   ├── user.ts
+│   │   │   ├── utils
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── password-match.validator.ts
+│   │   │   │   ├── show-error.ts
+│   │   │   ├── validation-message
+│   │   │   │   ├── validation-message.component.css
+│   │   │   │   ├── validation-message.component.html
+│   │   │   │   ├── validation-message.component.spec.ts
+│   │   │   │   ├── validation-message.component.ts
+│   │   │   │   ├── password-match.validator.ts
+│   │   │   │   ├── show-error.ts
 │   │   │   ├── shared.module.ts
 │   │   ├── user
-│   │   │   ├── sign
-│   │   │   │   ├── sign.component.css
-│   │   │   │   ├── sign.component.html
-│   │   │   │   ├── sign.component.spec.ts
-│   │   │   │   ├── sign.component.ts
+│   │   │   ├── sign-in
+│   │   │   │   ├── sign-in.component.css
+│   │   │   │   ├── sign-in.component.html
+│   │   │   │   ├── sign-in.component.spec.ts
+│   │   │   │   ├── sign-in.component.ts
+│   │   │   ├── sign-up
+│   │   │   │   ├── sign-up.component.css
+│   │   │   │   ├── sign-up.component.html
+│   │   │   │   ├── sign-up.component.spec.ts
+│   │   │   │   ├── sign-up.component.ts
 │   │   │   ├── user.module.ts
 │   │   │   ├── user-routing.module.ts
 │   │   ├── app.component.css
