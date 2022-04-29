@@ -35,19 +35,19 @@ export class AuthService {
     login$(userData: { email: string; password: string }): Observable<IUser> {
         return this
             .http
-            .post<IUser>(`${apiUrl}/users/login`, userData);
+            .post<IUser>(`${apiUrl}/login`, userData);
     }
 
     register$(userData: { username: string; email: string; imageUrl: string; password: string; repeatPassword: string }): Observable<void> {
         return this
             .http
-            .post<void>(`${apiUrl}/users/register`, userData);
+            .post<void>(`${apiUrl}/register`, userData);
     }
 
     logout$(): Observable<void> {
         return this
             .http
-            .delete<void>(`${apiUrl}/users/logout`);
+            .delete<void>(`${apiUrl}/logout`);
     }
 
     authenticate$(): Observable<IUser> {
