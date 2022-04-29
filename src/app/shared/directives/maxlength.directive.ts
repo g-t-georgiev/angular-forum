@@ -25,7 +25,7 @@ export class MaxlengthDirective implements Validator {
         }
         : null;
 
-        console.log(validationErrors);
+        // console.log(validationErrors);
 
         return validationErrors
     }
