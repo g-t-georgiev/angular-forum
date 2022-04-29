@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { AuthService, MessageBus } from '../services';
+import { AuthService } from '../services';
 import { IUser } from '../../shared/models';
 
 
@@ -18,8 +18,7 @@ import { IUser } from '../../shared/models';
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
-        private authService: AuthService,
-        private messageService: MessageBus.MessageBusService
+        private authService: AuthService
     ) { }
 
     intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -33,19 +32,6 @@ export class AuthInterceptor implements HttpInterceptor {
                                 event.url?.endsWith('login')
                             ) {
                                 this.authService.handleLogin(event.body as IUser);
-                                return;
-                            }
-
-                            if (
-                                event.url?.endsWith('register')
-                            ) {
-                                this.messageService.notify(
-                                    new MessageBus.Message(
-                                        MessageBus.MessageTypes.Success,
-                                        (event.body as { message: string })?.message
-                                    )
-                                );
-
                                 return;
                             }
 
