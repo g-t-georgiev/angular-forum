@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { ClearNotificationDirective, ValidateEmailDirective } from './directives';
 import { ValidateUrlDirective } from './directives/validate-url.directive';
+import { PasswordMatchDirective } from './directives/password-match.directive';
 
 @NgModule({
     declarations: [
         ClearNotificationDirective,
         ValidateEmailDirective,
-        ValidateUrlDirective
+        ValidateUrlDirective,
+        PasswordMatchDirective
     ],
     imports: [
         CommonModule
@@ -16,7 +18,8 @@ import { ValidateUrlDirective } from './directives/validate-url.directive';
     exports: [
         ClearNotificationDirective,
         ValidateEmailDirective,
-        ValidateUrlDirective
+        ValidateUrlDirective,
+        PasswordMatchDirective
     ]
 })
 export class SharedModule { }
