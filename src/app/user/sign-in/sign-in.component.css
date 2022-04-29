@@ -15,14 +15,18 @@
 
     font-family: var(--font-family);
 
+    width: 90%;
+    margin-block: 1rem;
+    margin-inline: auto;
+
     display: flex;
     justify-content: center;
 }
 
-.sidebar.register {
-    --gradient-color-primary: #3aaf9f;
-    --gradient-color-secondary: #34756d;
-    --gradient-angle: -45deg;
+.sidebar.login {
+    --gradient-color-primary: #b03b83;
+    --gradient-color-secondary: #753455;
+    --gradient-angle: 45deg;
 }
 
 .sidebar.darkmode {
@@ -84,10 +88,10 @@
     --form-button-text-color-lightness: 90%;
 }
 
-.form.register {
-    --form-title-color: hsl(172, 50%, var(--lightness));
-    --form-button-background-color: hsl(172, 50%, var(--lightness));
-    --form-shadow-offset-x: 5px;
+.form.login {
+    --form-title-color: hsl(323, 50%, var(--lightness));
+    --form-button-background-color: hsl(323, 50%, var(--lightness));
+    --form-shadow-offset-x: -5px;
 }
 
 .form {
