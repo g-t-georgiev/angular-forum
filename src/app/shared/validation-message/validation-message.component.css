@@ -1,9 +1,14 @@
 :host {
+    --font-size: inherit;
+    --error-color: red;
+
     align-self: stretch;
+
     width: 100%;
     padding: .5rem;
 }
 
 .message {
-    color: red;
+    color: var(--error-color);
+    font-size: calc(var(--font-size) * .9);
 }
