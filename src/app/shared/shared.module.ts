@@ -21,7 +21,8 @@ import { ValidationMessageComponent } from './validation-message/validation-mess
         ClearNotificationDirective,
         ValidateEmailDirective,
         ValidateUrlDirective,
-        PasswordMatchDirective
+        PasswordMatchDirective,
+        ValidationMessageComponent
     ]
 })
 export class SharedModule { }
