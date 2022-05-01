@@ -68,33 +68,17 @@ nav a {
 }
 
 .notifications {
-    --notification-controls-offset: .5rem;
-
-    --notification-padding: calc(
-        1.5rem + 
-        (2 * var(--notification-controls-offset))
-    );
-
     --notification-margin-block: 2rem;
     --notification-margin-inline: 1rem;
+    --notification-padding: 1rem;
     --notification-border-width: .1rem;
     --notification-border-style: solid;
     --notification-background-opacity: .2;
     --notification-font-size: 1.2rem;
 
-    --notifications-offset-top: calc(
-        var(--header-size-Y) +
-        var(--notification-margin-block)
-    );
-
-    --notifications-offset-right: calc(
-            var(--header-size-X) +
-            var(--notification-margin-inline)
-    );
-
     position: fixed;
-    top: var(--notifications-offset-top);
-    right: var(--notifications-offset-right);
+    top: calc(var(--header-size-Y) + var(--notification-margin-block));
+    right: calc(var(--header-size-X) + var(--notification-margin-inline));
 
     display: flex;
     flex-direction: column;
@@ -106,16 +90,21 @@ nav a {
 }
 
 .notification {
+    --notification-controls-padding: .5rem;
+
     --notification-error-color: hsl(0, 100%, 50%);
     --notification-error-background-color: rgba(255, 0, 0, var(--notification-background-opacity));
 
     --notification-success-color: hsl(120, 100%, 25%);
     --notification-success-background-color: rgba(0, 128, 0, var(--notification-background-opacity));
 
-    font-size: var(--notification-font-size);
+    display: flow-root;
+    width: 15vw;
     padding: var(--notification-padding);
     border-width: var(--notification-border-width);
     border-style: var(--notification-border-style);
+    font-size: var(--notification-font-size);
+    white-space: pre-line;
     cursor: pointer;
 }
 
@@ -132,12 +121,14 @@ nav a {
 }
 
 .notification__controls {
-    position: absolute;
-    top: var(--notification-controls-offset);
-    right: var(--notification-controls-offset);
-
+    float: right;
     display: flex;
     gap: 1rem;
+
+    padding: var(--notification-controls-padding);
+
+    margin-block-start: calc(var(--notification-padding) * -1);
+    margin-inline-end: calc(var(--notification-padding) * -1);
 
     font-size: calc(
         var(--notification-font-size) * .9
