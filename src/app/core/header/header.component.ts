@@ -47,23 +47,11 @@ export class HeaderComponent implements OnInit {
             .subscribe({
                 complete: () => {
                     this.isLoggingOut = false;
-                    this.messageBusService.notify(
-                        new MessageBus.Message(
-                            MessageBus.MessageTypes.Success, 
-                            'Logout successful!'
-                        )
-                    );
                     this.router.navigate(['/home']);
                 },
                 error: (err) => {
                     console.log(err);
                     this.isLoggingOut = false;
-                    this.messageBusService.notify(
-                        new MessageBus.Message(
-                            MessageBus.MessageTypes.Error, 
-                            err.error.message ?? 'Something went wrong.'
-                        )
-                    );
                     this.router.navigate(['/home']);
                 }
             })
