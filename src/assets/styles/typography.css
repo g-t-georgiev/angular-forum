@@ -6,11 +6,13 @@
 :root {
     --font-family: 'Open Sans', Helvetica, sans-serif;
     --font-weight: 400;
+    --font-size: inherit;
 }
 
 body {
     font-family: var(--font-family);
     font-weight: var(--font-weight);
+    font-size: var(--font-size);
 }
 
 a {
@@ -19,6 +21,18 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+input {
+    font-family: inherit;
+    font-weight: inherit;
+    color: currentColor;
+}
+
+::placeholder {
+    font-family: inherit;
+    font-weight: inherit;
+    color: currentColor;
 }
 
 button {
