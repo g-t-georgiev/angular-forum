@@ -50,12 +50,16 @@ export class AuthService {
             .delete<{ message: string }>(`${apiUrl}/logout`);
     }
 
-    authenticate$(): Observable<IUser> {
+    authenticate$(): Observable<{ message: string, user?: IUser }> {
         return this
             .http
-            .get<IUser>(`${apiUrl}/users/profile`)
+            .get<{ message: string, user?: IUser }>(`${apiUrl}/users/auth`)
             .pipe(
-                tap(user => this.handleLogin(user)),
+                tap(({ user }) => {
+                    if (user) {
+                        this.handleLogin(user);
+                    }
+                }),
                 catchError((err) => {
                     // console.log(err);
                     return EMPTY;
