@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
                 }
             })
     }
-    
+
     pin(index: number) {
         this.messageBusService.pin(index);
     }
@@ -68,19 +68,5 @@ export class HeaderComponent implements OnInit {
     dismiss(index: number) {
         this.messageBusService.clear(index);
     }
-
-    // generate notification manually
-    // for testing only
-    
-    // showNotification(text: string, type: string) {
-
-    //     const notification = new MessageBus.Message(
-    //         type === 'success' 
-    //         ? MessageBus.MessageTypes.Success
-    //         : MessageBus.MessageTypes.Error, 
-    //         text
-    //     );
-    //     this.messageBusService.notify(notification);
-    // }
 
 }
