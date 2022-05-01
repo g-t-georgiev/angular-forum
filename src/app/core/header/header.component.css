@@ -1,6 +1,9 @@
 :host {
     --header-padding: 2rem;
 
+    --preference-padding-inline: 1rem;
+    --preference-padding-block: 2rem;
+
     --nav-font-size: 1.5rem;
     --nav-logo-font-size: 2rem;
     --nav-padding: 1rem;
@@ -8,44 +11,19 @@
     --nav-border-color: currentColor;
     --nav-border-style: solid;
 
-    --notification-font-size: 1.2rem;
-    --notification-controls-offset: .5rem;
-    --notification-padding: calc(
-        1.5rem + 
-        (2 * var(--notification-controls-offset))
-    );
-    --notification-border-width: .1rem;
-    --notification-border-style: solid;
-    --notification-margin-block: calc(
-        3rem +
-        (2 * var(--notification-controls-offset))
-    );
-    --notification-margin-inline: 1rem;
-
     --header-size-X: calc(
         var(--header-padding) +
         var(--nav-border-size) +
-        var(--nav-padding)
+        var(--nav-padding) + 
+        var(--preference-padding-inline)
     );
 
     --header-size-Y: calc(
-        (2 * var(--header-padding)) + 
-        (2 * var(--nav-padding)) + 
         var(--nav-logo-font-size) + 
-        var(--nav-border-size)
-    );
-
-    --notification-size-X: calc(
-        var(--notification-margin-inline) +
-        var(--notification-border-width) +
-        var(--notification-padding)
-    );
-    
-    --notification-size-Y: calc(
-        var(--notification-margin-block) +
-        (2 * var(--nav-padding)) + 
-        (2 * var(--notification-border-width)) + 
-        var(--notification-font-size)
+        var(--nav-border-size) +
+        var(--preference-padding-block) +
+        (2 * var(--nav-padding)) +
+        (2 * var(--header-padding))
     );
 }
 
@@ -55,17 +33,18 @@ header {
 
 .user-preferences {
     display: flex;
-    /* justify-content: flex-end; */
     flex-wrap: wrap;
     align-items: center;
     gap: 2rem;
 
-    padding-inline: 1rem;
-    padding-block-end: 2rem;
+    padding-inline: var(--preference-padding-inline);
+    padding-block-end: var(--preference-padding-block);
 }
 
 nav {
     border-bottom: var(--nav-border-size) var(--nav-border-style) var(--nav-border-color);
+    padding: var(--nav-padding);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,15 +53,12 @@ nav {
 nav .logo {
     font-size: var(--nav-logo-font-size);
     color: inherit;
-    padding: var(--nav-padding);
 }
 
 nav ul {
     display: flex;
     justify-content: flex-start;
     gap: calc(var(--nav-padding) * 2);
-
-    padding: var(--nav-padding);
 }
 
 nav a {
@@ -91,50 +67,65 @@ nav a {
     color: inherit;
 }
 
-.notification {
+.notifications {
+    --notification-controls-offset: .5rem;
+
+    --notification-padding: calc(
+        1.5rem + 
+        (2 * var(--notification-controls-offset))
+    );
+
+    --notification-margin-block: 2rem;
+    --notification-margin-inline: 1rem;
+    --notification-border-width: .1rem;
+    --notification-border-style: solid;
     --notification-background-opacity: .2;
-    --notification-offset-top: calc(
-        var(--header-size-Y) - 
+    --notification-font-size: 1.2rem;
+
+    --notifications-offset-top: calc(
+        var(--header-size-Y) +
         var(--notification-margin-block)
     );
 
-    --notification-offset-right: calc(
-        var(--header-size-X) +
-        var(--notification-size-X) - 
-        (4 * var(--notification-margin-inline))
+    --notifications-offset-right: calc(
+            var(--header-size-X) +
+            var(--notification-margin-inline)
     );
 
     position: fixed;
+    top: var(--notifications-offset-top);
+    right: var(--notifications-offset-right);
 
-    right: calc(
-        var(--notification-offset-right) * 1
-    );
-
-    font-size: var(--notification-font-size);
-
-    padding: var(--notification-padding);
-    border-width: var(--notification-border-width);
-    border-style: var(--notification-border-style);
+    display: flex;
+    flex-direction: column;
+    gap: var(--notification-margin-block);
 }
 
 .notification:hover {
     --notification-background-opacity: .4;
+}
+
+.notification {
+    --notification-error-color: hsl(0, 100%, 50%);
+    --notification-error-background-color: rgba(255, 0, 0, var(--notification-background-opacity));
+
+    --notification-success-color: hsl(120, 100%, 25%);
+    --notification-success-background-color: rgba(0, 128, 0, var(--notification-background-opacity));
+
+    font-size: var(--notification-font-size);
+    padding: var(--notification-padding);
+    border-width: var(--notification-border-width);
+    border-style: var(--notification-border-style);
     cursor: pointer;
 }
 
 .notification.error {
-    --notification-error-color: rgb(255, 0, 0);
-    --notification-error-background-color: rgba(255, 0, 0, var(--notification-background-opacity));
-
     border-color: var(--notification-error-color);
     background-color: var(--notification-error-background-color);
     color: var(--notification-error-color);
 }
 
 .notification.success {
-    --notification-success-color: rgb(0, 128, 0);
-    --notification-success-background-color: rgba(0, 128, 0, var(--notification-background-opacity));
-
     border-color: var(--notification-success-color);
     background-color: var(--notification-success-background-color);
     color: var(--notification-success-color);
