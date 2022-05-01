@@ -17,7 +17,7 @@
                 <i class="fa-solid fa-user"></i>
             </span>
         </label>
-        <input type="text" name="username" id="username" placeholder="Name" required minlength="4" pattern="(?=[A-Za-z]+)^[A-Za-z0-9]+$" #username="ngModel" appMaxlength="30" ngModel>
+        <input class="form__input" type="text" name="username" id="username" placeholder="Name" required minlength="4" pattern="(?=[A-Za-z]+)^[A-Za-z0-9]+$" #username="ngModel" appMaxlength="30" ngModel>
 
         <ng-container *ngIf="showErrorMessage(username)">
 
@@ -46,7 +46,7 @@
                 <i class="fa-solid fa-envelope"></i>
             </span>
         </label>
-        <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
+        <input class="form__input" type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
 
         <ng-container *ngIf="showErrorMessage(email)">
 
@@ -67,7 +67,7 @@
                 <i class="fa-regular fa-image"></i>
             </span>
         </label>
-        <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required appValidateUrl #image="ngModel" ngModel>
+        <input class="form__input" type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" required appValidateUrl #image="ngModel" ngModel>
 
         <ng-container *ngIf="showErrorMessage(image)">
 
@@ -88,7 +88,7 @@
                 <i class="fa-solid fa-lock"></i>
             </span>
         </label>
-        <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
+        <input class="form__input" type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
 
         <ng-container *ngIf="showErrorMessage(password)">
 
@@ -109,7 +109,7 @@
                 <i class="fa-solid fa-lock"></i>
             </span>
         </label>
-        <input type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required appPasswordMatch [passwordControl]="password" #repeatPassword="ngModel" ngModel>
+        <input class="form__input" type="password" name="repeatPassword" id="repeatPassword" placeholder="Repeat password" required appPasswordMatch [passwordControl]="password" #repeatPassword="ngModel" ngModel>
     
         <ng-container *ngIf="showErrorMessage(repeatPassword)">
 

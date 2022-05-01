@@ -10,7 +10,7 @@
                 <i class="fa-solid fa-envelope"></i>
             </span>
         </label>
-        <input type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
+        <input class="form__input" type="email" name="email" id="email" placeholder="Email" required appValidateEmail #email="ngModel" ngModel>
 
         <ng-container *ngIf="showErrorMessage(email)">
 
@@ -31,7 +31,7 @@
                 <i class="fa-solid fa-lock"></i>
             </span>
         </label>
-        <input type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
+        <input class="form__input" type="password" name="password" id="password" placeholder="Password" required minlength="6" #password="ngModel" ngModel>
 
         <ng-container *ngIf="showErrorMessage(password)">
 

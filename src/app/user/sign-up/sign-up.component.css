@@ -148,21 +148,19 @@
 .form__row {
     --input-padding-block: .5rem;
     --input-padding-inline: 1rem;
-    --input-background-color: transparent;
 
     --form-label-lightness: 0%;
     --form-label-color: hsla(0, 0%, var(--form-label-lightness));
     --form-label-size: calc(var(--form-row-text-size) * .85);
 
     --form-input-placeholder-opacity: .53;
-    --form-input-text-size: inherit;
+    --form-input-text-size: var(--form-row-text-size);
 
     width: var(--form-row-width);
     padding-block: var(--form-row-padding-block);
     padding-inline: var(--form-row-padding-inline);
-
     font-size: var(--form-row-text-size);
-
+    
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -182,29 +180,22 @@
     color: var(--form-label-color);
 }
 
-.form__row input {
+.form__row .form__input {
     width: 80%;
-    padding-inline: var(--input-padding-inline);
-    padding-block: var(--input-padding-block);
-    border: none;
-
-    background-color: var(--input-background-color);
+    padding-inline: var(--input-padding-inline) !important;
+    padding-block: var(--input-padding-block) !important;
 }
 
-.form__row input:focus {
+.form__row .form__input:focus {
     outline: none;
 }
 
-.form__row input,
-.form__row input::placeholder {
-    font-family: inherit;
-    font-weight: inherit;
-    color: currentColor;
-
+.form__row .form__input,
+.form__row .form__input::placeholder {
     font-size: var(--form-input-text-size);
 }
 
-.form__row input::placeholder {
+.form__row .form__input::placeholder {
     opacity: var(--form-input-placeholder-opacity);
 }
 
