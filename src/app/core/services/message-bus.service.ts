@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 
 
@@ -23,6 +23,11 @@ export class MessageBusService {
 
     private messageQueue: BehaviorSubject<Message[] | []>;
     onNewMessage$: Observable<Message[] | []>;
+    
+    
+    get hasMessages$(): Observable<boolean> {
+        return of(this.messageQueue.getValue().length > 0);
+    }
 
     constructor() {
         this.messageQueue = new BehaviorSubject<Message[] | []>([]);
