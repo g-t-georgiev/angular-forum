@@ -6,7 +6,7 @@ import {
     HttpInterceptor,
     HttpResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 import { AuthService } from '../services';
@@ -31,8 +31,11 @@ export class AuthInterceptor implements HttpInterceptor {
                             if (
                                 event.url?.endsWith('login')
                             ) {
-                                this.authService.handleLogin(event.body as IUser);
-                                return;
+                                const { user } = event.body as { message: string, user?: IUser };
+
+                                if (!user) return;
+
+                                this.authService.handleLogin(user);
                             }
 
                             if (
