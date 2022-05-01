@@ -36,31 +36,12 @@
         </ul>
     </nav>
 
-    <!--
-        Notification generator UI
-    -->
-
-    <!--
-    <div id="notification-generator">
-        <label for="notificaiton-text">Notification text: </label>
-        <input #text type="text" id="notification-text">
-        <br>
-        <label for="notification-type">Notification type: </label>
-        <select #type id="notification-type">
-            <option value="error">Error</option>
-            <option value="success">Success</option>
-        </select>
-        <br>
-        <button (click)="showNotification(text.value, type.value)">Show Notification</button>
-    </div>
-    -->
-
     <section 
         *ngIf="hasNotifications$ | async"
         class="notifications"
     >
 
-        <section 
+        <article 
             *ngFor="let notification of (notifications$ | async); let i = index" 
             class="notification" 
             [class.success]="notification.type === notificationTypes.Success" 
@@ -68,12 +49,13 @@
             [clearNotification]="notification.pinned"
             [notificationIndex]="i"
         >
-            {{notification.text}}
-            <span class="notification__controls">
+            <header class="notification__controls">
                 <i *ngIf="!notification.pinned" class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
                 <i class="fa-solid fa-xmark" (click)="dismiss(i)"></i>
-            </span>
-        </section>
+            </header>
+
+            {{notification.text}}
+        </article>
         
     </section>
 
