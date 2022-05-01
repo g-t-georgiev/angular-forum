@@ -14,7 +14,11 @@ export class HeaderComponent implements OnInit {
     private isLoggingOut: boolean = false;
 
     readonly notificationTypes = MessageBus.MessageTypes;
-    notification$!: Observable<MessageBus.Message[] | []>;
+    notifications$!: Observable<MessageBus.Message[] | []>;
+    
+    get hasNotifications$(): Observable<boolean> {
+        return this.messageBusService.hasMessages$;
+    }
 
     get currentUser$(): Observable<IUser | undefined> {
         return this.authService.currentUser$;
@@ -31,7 +35,7 @@ export class HeaderComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.notification$ = this.messageBusService.onNewMessage$;
+        this.notifications$ = this.messageBusService.onNewMessage$;
     }
 
     logoutHandler(ev: Event) {
@@ -56,15 +60,7 @@ export class HeaderComponent implements OnInit {
                 }
             })
     }
-
-    private __notificationOffsetTopCSSVarName: string = 'var(--notification-offset-top)';
-    private __notificationSizeYCSSVarName: string = 'var(--notification-size-Y)';
-    calcNotificationsOffset(index: number): string {
-        return `
-            calc(${this.__notificationOffsetTopCSSVarName} + (${this.__notificationSizeYCSSVarName} * ${(index + 1)}))
-        `.trim();
-    }
-
+    
     pin(index: number) {
         this.messageBusService.pin(index);
     }
