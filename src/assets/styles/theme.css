@@ -17,3 +17,9 @@ body {
 a {
     color: var(--anchor-color);
 }
+
+input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
