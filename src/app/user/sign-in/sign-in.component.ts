@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router'
 
-
-import { AppThemeSwitchService } from 'src/app/core/services';
+import { AppThemeSwitchService, AuthService } from 'src/app/core/services';
 import { showErrorMessage } from 'src/app/shared/utils';
 
 @Component({
@@ -17,6 +17,9 @@ export class SignInComponent {
     isDarkModeOn$!: Observable<boolean>
 
     constructor(
+        private router: Router,
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService,
         private themeService: AppThemeSwitchService
     ) {
         this.isDarkModeOn$ = themeService.isDarkModeOn$;
@@ -26,8 +29,17 @@ export class SignInComponent {
         console.log(loginForm.status);
         if (loginForm.invalid) return;
 
-        console.log(loginForm.value);
-        loginForm.reset();
+        this.authService.login$(loginForm.value)
+            .subscribe({
+                complete: () => {
+                    loginForm.reset();
+                    const redirectToPath = this.activatedRoute.snapshot.queryParams?.['redirectTo'] ?? '/';
+                    this.router.navigate([redirectToPath]);
+                },
+                error: (err) => {
+                    // console.log(err);
+                }
+            })
     }
 
 }
