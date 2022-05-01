@@ -32,22 +32,22 @@ export class AuthService {
         private http: HttpClient
     ) { }
 
-    login$(userData: { email: string; password: string }): Observable<IUser> {
+    login$(userData: { email: string; password: string }): Observable<{ user: IUser, message: string }> {
         return this
             .http
-            .post<IUser>(`${apiUrl}/login`, userData);
+            .post<{ user: IUser, message: string }>(`${apiUrl}/login`, userData);
     }
 
-    register$(userData: { username: string; email: string; imageUrl: string; password: string; repeatPassword: string }): Observable<void> {
+    register$(userData: { username: string; email: string; imageUrl: string; password: string; repeatPassword: string }): Observable<{ message: string }> {
         return this
             .http
-            .post<void>(`${apiUrl}/register`, userData);
+            .post<{ message: string }>(`${apiUrl}/register`, userData);
     }
 
-    logout$(): Observable<void> {
+    logout$(): Observable<{ message: string }> {
         return this
             .http
-            .delete<void>(`${apiUrl}/logout`);
+            .delete<{ message: string }>(`${apiUrl}/logout`);
     }
 
     authenticate$(): Observable<IUser> {
