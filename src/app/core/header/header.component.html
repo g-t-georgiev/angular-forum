@@ -54,21 +54,27 @@
         <button (click)="showNotification(text.value, type.value)">Show Notification</button>
     </div>
     -->
-    
+
     <section 
-        *ngFor="let notification of (notification$ | async); let i = index" 
-        class="notification" 
-        [class.success]="notification.type === notificationTypes.Success" 
-        [class.error]="notification.type === notificationTypes.Error" 
-        [ngStyle]="{ top: calcNotificationsOffset(i) }"
-        [clearNotification]="notification.pinned"
-        [notificationIndex]="i"
+        *ngIf="hasNotifications$ | async"
+        class="notifications"
     >
-        {{notification.text}}
-        <span class="notification__controls">
-            <i *ngIf="!notification.pinned" class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
-            <i class="fa-solid fa-xmark" (click)="dismiss(i)"></i>
-        </span>
+
+        <section 
+            *ngFor="let notification of (notifications$ | async); let i = index" 
+            class="notification" 
+            [class.success]="notification.type === notificationTypes.Success" 
+            [class.error]="notification.type === notificationTypes.Error" 
+            [clearNotification]="notification.pinned"
+            [notificationIndex]="i"
+        >
+            {{notification.text}}
+            <span class="notification__controls">
+                <i *ngIf="!notification.pinned" class="fa-solid fa-thumbtack" (click)="pin(i)"></i>
+                <i class="fa-solid fa-xmark" (click)="dismiss(i)"></i>
+            </span>
+        </section>
+        
     </section>
 
 </header>
