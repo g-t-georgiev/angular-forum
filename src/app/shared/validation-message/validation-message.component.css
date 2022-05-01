@@ -12,5 +12,5 @@
 
 .message {
     color: hsl(0, var(--error-color-saturation), 50%);
-    font-size: calc(var(--font-size) * .95);
+    font-size: var(--font-size);
 }
