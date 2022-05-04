@@ -6,6 +6,7 @@ import { ValidateUrlDirective } from './directives/validate-url.directive';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { ValidationMessageComponent } from './validation-message/validation-message.component';
 import { MaxlengthDirective } from './directives/maxlength.directive';
+import { ToggleDropdownDirective } from './directives/toggle-dropdown.directive';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { MaxlengthDirective } from './directives/maxlength.directive';
         PasswordMatchDirective,
         MaxlengthDirective,
         ValidationMessageComponent,
+        ToggleDropdownDirective,
     ],
     imports: [
         CommonModule
@@ -25,7 +27,8 @@ import { MaxlengthDirective } from './directives/maxlength.directive';
         ValidateUrlDirective,
         PasswordMatchDirective,
         MaxlengthDirective,
-        ValidationMessageComponent
+        ValidationMessageComponent,
+        ToggleDropdownDirective,
     ]
 })
 export class SharedModule { }
