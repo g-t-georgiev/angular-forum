@@ -1,14 +1,26 @@
-<label>
-    <select 
-        #selectLang 
-        (change)="toggle(selectLang)" 
-        [class.theme--dark]="isDarkModeOn$ | async"
-        title="Toggle language settings"
+<section class="dropdown" [class.darkmode]="darkModeOn" (click)="toggleDropdown($event)">
+    <input 
+        #inputElem
+        type="text" 
+        name="language" 
+        id="language"
+        [attr.value]="showSelectedLanguage()"
+        placeholder="--- Select Language ---" 
+        disabled
     >
-        <option 
-            *ngFor="let lang of langList | keyvalue"
-            [attr.value]="lang.value"
-            [selected]="lang.value === (currentLang$ | async)"
-        >{{lang.key}}</option>
-    </select>
-</label>
+
+    <span class="dropdown__arrow" [class.open]="opened">
+        <i class="fa-solid fa-chevron-down"></i>
+    </span>
+
+    <section class="dropdown__options" *ngIf="opened" (click)="toggleLanguage($event)">
+
+        <article 
+            *ngFor="let lang of languageOptions | keyvalue" 
+            [attr.data-value]="lang.value" 
+            class="dropdown__option" 
+            [class.selected]="lang.value === currentLang"
+        >{{lang.key}}</article>
+    
+    </section>
+</section>
