@@ -11,12 +11,10 @@ export const LangOptions = {
 @Injectable()
 export class AppLangSwitchService {
 
-    private _currentLang = new BehaviorSubject<string>(LangOptions.English);
-    currentLang$: Observable<string> = this._currentLang.asObservable();
+    private _currentLang = new BehaviorSubject<string | undefined>(undefined);
+    currentLang$: Observable<string | undefined> = this._currentLang.asObservable();
 
-    constructor() { }
-
-    toggle(selectedLang: string): void {
+    toggle(selectedLang: string | undefined): void {
         this._currentLang.next(selectedLang);
     }
 
