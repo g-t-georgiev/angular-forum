@@ -1,5 +1,4 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AppThemeSwitchService, LanguageService } from '../services';
@@ -16,7 +15,7 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
     // Hard-coded list of supported languages
     readonly languageOptions = LanguageService.LangOptions;
 
-    opened: boolean;
+    dropdownOpened: boolean;
     currentLang!: string;
     darkModeOn!: boolean;
     subscription!: Subscription;
@@ -24,9 +23,8 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
     constructor(
         private languageService: LanguageService.AppLangSwitchService,
         private colorThemeService: AppThemeSwitchService,
-        @Inject(DOCUMENT) private document: Document
     ) {
-        this.opened = false;
+        this.dropdownOpened = false;
     }
 
     ngOnInit(): void {
@@ -47,8 +45,17 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
         this.subscription?.unsubscribe();
     }
 
-    toggleDropdown(ev?: Event) {
-        this.opened = !this.opened;
+    toggleDropdown(targetClicked?: boolean) {
+        // console.log(targetClicked);
+        if (!targetClicked) {
+
+            if (!this.dropdownOpened) return;
+
+            this.dropdownOpened = false;
+            return;
+        }
+
+        this.dropdownOpened = !this.dropdownOpened;
     }
 
     toggleLanguage(ev: MouseEvent): void {

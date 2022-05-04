@@ -16,7 +16,7 @@
 }
 
 .dropdown {
-    --dropdown-input-background-color: var(--dropdown-background-color);
+    --dropdown-input-background-color: transparent;
     --dropdown-input-padding-block: var(--dropdown-padding-block);
     --dropdown-input-padding-inline: var(--dropdown-padding-inline);
     --dropdown-input-font-size: var(--font-size);
@@ -25,10 +25,15 @@
     --dropdown-arrow-top-offset: calc(var(--dropdown-padding-block) * 2);
     --dropdown-arrow-right-offset: var(--dropdown-padding-inline);
     --dropdown-arrow-font-size: calc(var(--font-size) * .8);
+    --dropdown-arrow-font-family: 'FontAwesome';
+    --dropdown-arrow-opacity: 1;
 
+    --dropdown-options-visibility: hidden;
     --dropdown-options-top-offset: calc(100% + var(--dropdown-border-width));
     --dropdown-options-left-offset: calc(var(--dropdown-border-width) * -1);
     --dropdown-options-width: calc(100% + (2 * var(--dropdown-border-width)));
+    --dropdown-options-max-height: 10vh;
+    --dropdown-options-overflow: auto;
     --dropdown-options-background-color: var(--dropdown-background-color);
     --dropdown-options-text-color: var(--dropdown-text-color);
     --dropdown-options-border-style: solid;
@@ -45,11 +50,19 @@
     cursor: pointer;
 }
 
-.dropdown__arrow {
+.dropdown::after {
     position: absolute;
     top: var(--dropdown-arrow-top-offset);
     right: var(--dropdown-arrow-right-offset);
+
+    content: '\f078';
+    font-family: var(--dropdown-arrow-font-family);
     font-size: var(--dropdown-arrow-font-size);
+    opacity: var(--dropdown-arrow-opacity);
+}
+
+.dropdown.opened::after {
+    --dropdown-arrow-opacity: .5;
 }
 
 .dropdown input {
@@ -66,7 +79,7 @@
 }
 
 .dropdown input::placeholder {
-    text-align: center;
+    text-align: left;
 }
 
 .dropdown__options {
@@ -76,15 +89,22 @@
     --dropdown-option-border-width: var(--dropdown-options-border-width);
     --dropdown-option-border-color: var(--dropdown-options-border-color);
     
+    visibility: var(--dropdown-options-visibility);
+    overflow-y: var(--dropdown-options-overflow);
     position: absolute;
     top: var(--dropdown-options-top-offset);
     left: var(--dropdown-options-left-offset);
     width: var(--dropdown-options-width);
+    max-height: var(--dropdown-options-max-height);
     background-color: var(--dropdown-options-background-color);
     color: var(--dropdown-options-text-color);
     border-style: var(--dropdown-options-border-style);
     border-width: var(--dropdown-options-border-width);
     border-color: var(--dropdown-options-border-color);
+}
+
+.dropdown.opened .dropdown__options {
+    --dropdown-options-visibility: visible;
 }
 
 .dropdown__option {
@@ -111,8 +131,4 @@
 .dropdown__option.selected {
     background-color: rgb(52, 93, 145);
     color: #dee4e7;
-}
-
-.open {
-    opacity: .5;
 }

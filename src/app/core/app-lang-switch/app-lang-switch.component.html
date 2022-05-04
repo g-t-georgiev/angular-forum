@@ -1,6 +1,13 @@
-<section class="dropdown" [class.darkmode]="darkModeOn" (click)="toggleDropdown($event)">
+<section 
+    class="dropdown" 
+    [class.darkmode]="darkModeOn" 
+    [class.opened]="dropdownOpened"
+    appToggleDropdown
+    (on-target)="toggleDropdown($event)"
+>
+
     <input 
-        #inputElem
+        class="dropdown__field"
         type="text" 
         name="language" 
         id="language"
@@ -9,11 +16,7 @@
         disabled
     >
 
-    <span class="dropdown__arrow" [class.open]="opened">
-        <i class="fa-solid fa-chevron-down"></i>
-    </span>
-
-    <section class="dropdown__options" *ngIf="opened" (click)="toggleLanguage($event)">
+    <section class="dropdown__options" (click)="toggleLanguage($event)">
 
         <article 
             *ngFor="let lang of languageOptions | keyvalue" 
@@ -23,4 +26,5 @@
         >{{lang.key}}</article>
     
     </section>
+
 </section>
