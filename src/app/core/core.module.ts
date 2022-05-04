@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { AuthService, MessageBus, AppThemeSwitchService, AppLangSwitchService } from './services';
+import { AuthService, MessageBus, AppThemeSwitchService, LanguageService } from './services';
 import { AttachCookieInterceptor, AuthInterceptor, ResponseMessageInterceptor } from './interceptors';
 import { HeaderComponent } from './header/header.component';
 import { AppThemeSwitchComponent } from './app-theme-switch/app-theme-switch.component';
@@ -35,7 +35,7 @@ export class CoreModule {
                 AuthService,
                 MessageBus.MessageBusService,
                 AppThemeSwitchService,
-                AppLangSwitchService,
+                LanguageService.AppLangSwitchService,
                 {
                     provide: HTTP_INTERCEPTORS,
                     useClass: AttachCookieInterceptor,
