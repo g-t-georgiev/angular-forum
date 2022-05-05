@@ -4,17 +4,19 @@
     --dropdown-padding-block: .25rem;
     --dropdown-padding-inline: .5rem;
     --dropdown-background-color: hsl(200, 16%, 89%);
-    --dropdown-background-color-hover: hsl(200, 16%, 85%);
-    --dropdown-background-color-selected: hsl(200, 16%, 83%);
+    --dropdown-background-color-hover: hsl(200, 10%, 82%);
+    --dropdown-background-color-selected: hsl(200, 10%, 78%);
     --dropdown-text-color: currentColor;
     --dropdown-border-width: .05rem;
-    --dropdown-border-color: #222;
+    --dropdown-border-color: hsl(0, 0%, 20%);
 }
 
 .darkmode {
-    --dropdown-background-color: #222;
-    --dropdown-text-color: #dee4e7;
-    --dropdown-border-color: #dee4e7;
+    --dropdown-background-color: hsl(0, 0%, 20%);
+    --dropdown-background-color-hover: hsl(0, 0%, 31%);
+    --dropdown-background-color-selected: hsl(0, 0%, 27%);
+    --dropdown-text-color: hsl(200, 16%, 75%);
+    --dropdown-border-color: hsl(0, 0%, 39%);
 }
 
 .dropdown {
