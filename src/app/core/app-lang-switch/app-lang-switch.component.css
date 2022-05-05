@@ -61,6 +61,8 @@
     font-family: var(--dropdown-arrow-font-family);
     font-size: var(--dropdown-arrow-font-size);
     opacity: var(--dropdown-arrow-opacity);
+
+    transition: opacity .1s linear;
 }
 
 .dropdown.opened::after {
@@ -111,6 +113,8 @@
     border-bottom-style: var(--dropdown-option-border-style);
     border-bottom-width: var(--dropdown-option-border-width);
     border-bottom-color: var(--dropdown-option-border-color);
+
+    transition: backgroung-color .2s linear;
 }
 
 .dropdown__option:last-child {
