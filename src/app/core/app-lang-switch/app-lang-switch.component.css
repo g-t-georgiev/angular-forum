@@ -8,7 +8,7 @@
     --dropdown-background-color-selected: hsl(200, 10%, 78%);
     --dropdown-text-color: currentColor;
     --dropdown-border-width: .05rem;
-    --dropdown-border-color: hsl(0, 0%, 20%);
+    --dropdown-border-color: hsl(0, 0%, 30%);
 }
 
 .darkmode {
