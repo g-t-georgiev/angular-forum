@@ -62,11 +62,13 @@
     font-size: var(--dropdown-arrow-font-size);
     opacity: var(--dropdown-arrow-opacity);
 
-    transition: opacity .1s linear;
+    transition: opacity .1s linear, 
+        transform .1s linear;
 }
 
 .dropdown.opened::after {
     --dropdown-arrow-opacity: .5;
+    transform: rotateZ(-180deg);
 }
 
 .dropdown input {
@@ -114,7 +116,7 @@
     border-bottom-width: var(--dropdown-option-border-width);
     border-bottom-color: var(--dropdown-option-border-color);
 
-    transition: backgroung-color .2s linear;
+    transition: background-color .2s linear;
 }
 
 .dropdown__option:last-child {
