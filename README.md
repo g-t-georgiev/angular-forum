@@ -66,6 +66,8 @@ Public parts are "home page", where people can read and search all themes availa
 │   │   │   │   ├── maxlength.directive.ts
 │   │   │   │   ├── password-match.directive.spec.ts
 │   │   │   │   ├── password-match.directive.ts
+│   │   │   │   ├── toggle-dropdown.directive.spec.ts
+│   │   │   │   ├── toggle-dropdown.directive.ts
 │   │   │   │   ├── validate-email.directive.spec.ts
 │   │   │   │   ├── validate-email.directive.ts
 │   │   │   │   ├── validate-url.directive.spec.ts
