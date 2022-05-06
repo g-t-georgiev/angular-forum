@@ -4,8 +4,6 @@
     --dropdown-padding-block: .25rem;
     --dropdown-padding-inline: .5rem;
     --dropdown-background-color: hsl(200, 16%, 89%);
-    --dropdown-background-color-hover: hsl(200, 10%, 82%);
-    --dropdown-background-color-selected: hsl(200, 10%, 78%);
     --dropdown-text-color: currentColor;
     --dropdown-border-width: .05rem;
     --dropdown-border-color: hsl(0, 0%, 30%);
@@ -13,9 +11,6 @@
 
 .darkmode {
     --dropdown-background-color: hsl(0, 0%, 20%);
-    --dropdown-background-color-hover: hsl(0, 0%, 31%);
-    --dropdown-background-color-selected: hsl(0, 0%, 27%);
-    --dropdown-text-color: hsl(200, 16%, 75%);
     --dropdown-border-color: hsl(0, 0%, 39%);
 }
 
@@ -116,23 +111,42 @@
 }
 
 .dropdown__option {
+    --dropdown-option-marker-content: '\f00c';
+    --dropdown-option-marker-font-size: calc(var(--font-size) * .8);
+    --dropdown-option-marker-font-family: 'FontAwesome';
+    --dropdown-option-marker-opacity: 0;
+
+    display: flex;
+    justify-content: space-between;
+
     padding-block: var(--dropdown-option-padding-block);
     padding-inline: var(--dropdown-option-padding-inline);
     border-style: var(--dropdown-option-border-style);
     border-width: var(--dropdown-option-border-width);
     border-color: var(--dropdown-option-border-color);
-
-    transition: background-color .2s linear;
 }
 
 .dropdown__option:nth-child(n) {
     border-top: none;
 }
 
-.dropdown__option:hover {
-    background-color: var(--dropdown-background-color-hover);
+.dropdown__option::after {
+    content: var(--dropdown-option-marker-content);
+    font-family: var(--dropdown-option-marker-font-family);
+    font-size: var(--dropdown-option-marker-font-size);
+    opacity: var(--dropdown-option-marker-opacity);
+    transition: all .2s ease-out;
 }
 
-.dropdown__option.selected {
-    background-color: var(--dropdown-background-color-selected);
+.dropdown__option:hover {
+    --dropdown-option-marker-opacity: .5;
+}
+
+.dropdown__option.selected::after {
+    --dropdown-option-marker-opacity: 1;
+}
+
+.dropdown__option.selected:hover::after {
+    --dropdown-option-marker-content: '\f00d';
+    --dropdown-option-marker-font-size: calc(var(--font-size) * .9);
 }
