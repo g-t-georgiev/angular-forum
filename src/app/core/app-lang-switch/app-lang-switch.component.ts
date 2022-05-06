@@ -65,6 +65,8 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
     }
 
     showSelectedLanguage(): string {
+        if (this.dropdownOpened) return '';
+        
         return Object
             .entries(this.languageOptions)
             .find(
