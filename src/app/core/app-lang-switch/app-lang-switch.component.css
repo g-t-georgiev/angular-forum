@@ -52,6 +52,8 @@
     border-width: var(--dropdown-border-width);
     border-color: var(--dropdown-border-color);
     cursor: pointer;
+
+    box-shadow: 0 .1rem .175rem rgba(0, 0, 0, .5);
 }
 
 .dropdown::after {
