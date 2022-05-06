@@ -6,15 +6,9 @@
     (on-target)="toggleDropdown($event)"
 >
 
-    <input 
-        class="dropdown__field"
-        type="text" 
-        name="language" 
-        id="language" 
-        [attr.value]="showSelectedLanguage()"
-        placeholder="--- Select Language ---" 
-        disabled
-    >
+    <section class="dropdown__field">
+        {{showSelectedLanguage() || '--- Select Language ---'}}
+    </section>
 
     <section class="dropdown__options" (click)="toggleLanguage($event)">
 

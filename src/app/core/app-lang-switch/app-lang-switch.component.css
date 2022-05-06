@@ -1,7 +1,7 @@
 :host {
     --font-size: inherit;
 
-    --dropdown-padding-block: .25rem;
+    --dropdown-padding-block: .5rem;
     --dropdown-padding-inline: .5rem;
     --dropdown-background-color: hsl(200, 16%, 89%);
     --dropdown-text-color: currentColor;
@@ -15,11 +15,9 @@
 }
 
 .dropdown {
-    --dropdown-input-background-color: transparent;
-    --dropdown-input-padding-block: var(--dropdown-padding-block);
-    --dropdown-input-padding-inline: var(--dropdown-padding-inline);
-    --dropdown-input-font-size: var(--font-size);
-    --dropdown-input-text-color: var(--dropdown-text-color);
+    --dropdown-field-background-color: transparent;
+    --dropdown-field-font-size: var(--font-size);
+    --dropdown-field-text-color: var(--dropdown-text-color);
 
     --dropdown-arrow-top-offset: calc(var(--dropdown-padding-block) * 2);
     --dropdown-arrow-right-offset: var(--dropdown-padding-inline);
@@ -44,6 +42,8 @@
     font-size: var(--font-size);
     background-color: var(--dropdown-background-color);
     color: var(--dropdown-text-color);
+    padding-block: var(--dropdown-padding-block);
+    padding-inline: var(--dropdown-padding-inline);
     border-style: solid;
     border-width: var(--dropdown-border-width);
     border-color: var(--dropdown-border-color);
@@ -52,11 +52,18 @@
     box-shadow: 0 .1rem .175rem rgba(0, 0, 0, .5);
 }
 
-.dropdown::after {
-    position: absolute;
-    top: var(--dropdown-arrow-top-offset);
-    right: var(--dropdown-arrow-right-offset);
+.dropdown__field {
+    width: 11rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    font-size: var(--dropdown-field-font-size);
+    color: var(--dropdown-field-text-color);
+    background-color: var(--dropdown-field-background-color);
+}
+
+.dropdown__field::after {
     content: '\f078';
     font-family: var(--dropdown-arrow-font-family);
     font-size: var(--dropdown-arrow-font-size);
@@ -66,26 +73,13 @@
         transform .1s linear;
 }
 
-.dropdown.opened::after {
+.dropdown.opened .dropdown__field::after {
     --dropdown-arrow-opacity: .5;
     transform: rotateZ(-180deg);
 }
 
-.dropdown input {
-    background-color: var(--dropdown-input-background-color);
-    padding-block: var(--dropdown-input-padding-block);
-    padding-inline: var(--dropdown-input-padding-inline);
-    cursor: pointer;
-}
-
-.dropdown input,
-.drodown ::placeholder {
-    font-size: var(--dropdown-input-font-size);
-    color: var(--dropdown-input-text-color);
-}
-
 .dropdown__options {
-    --dropdown-option-padding-block: calc(var(--dropdown-padding-block) * 2);
+    --dropdown-option-padding-block: var(--dropdown-padding-block);
     --dropdown-option-padding-inline: var(--dropdown-padding-inline);
     --dropdown-option-border-style: var(--dropdown-options-border-style);
     --dropdown-option-border-width: var(--dropdown-options-border-width);
@@ -118,6 +112,7 @@
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     padding-block: var(--dropdown-option-padding-block);
     padding-inline: var(--dropdown-option-padding-inline);
