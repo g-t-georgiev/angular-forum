@@ -34,7 +34,7 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
         }).pipe(
             tap(
                 ({ currentLang, darkModeOn }) => {
-                    this.currentLang = currentLang ?? 'N/A';
+                    this.currentLang = currentLang ?? '';
                     this.darkModeOn = darkModeOn;
                 }
             )
