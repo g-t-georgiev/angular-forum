@@ -32,7 +32,7 @@
     --dropdown-arrow-font-family: 'FontAwesome';
     --dropdown-arrow-opacity: 1;
 
-    --dropdown-options-visibility: hidden;
+    --dropdown-options-display: none;
     --dropdown-options-top-offset: calc(100% + (2 * var(--dropdown-border-width)));
     --dropdown-options-left-offset: calc(var(--dropdown-border-width) * -1);
     --dropdown-options-width: calc(100% + (2 * var(--dropdown-border-width)));
@@ -45,6 +45,7 @@
     --dropdown-options-border-color: var(--dropdown-border-color);
 
     position: relative;
+
     font-size: var(--font-size);
     background-color: var(--dropdown-background-color);
     color: var(--dropdown-text-color);
@@ -95,11 +96,13 @@
     --dropdown-option-border-width: var(--dropdown-options-border-width);
     --dropdown-option-border-color: var(--dropdown-options-border-color);
     
-    visibility: var(--dropdown-options-visibility);
+    display: var(--dropdown-options-display);
     overflow-y: var(--dropdown-options-overflow);
+
     position: absolute;
     top: var(--dropdown-options-top-offset);
     left: var(--dropdown-options-left-offset);
+
     width: var(--dropdown-options-width);
     max-height: var(--dropdown-options-max-height);
     background-color: var(--dropdown-options-background-color);
@@ -109,7 +112,7 @@
 }
 
 .dropdown.opened .dropdown__options {
-    --dropdown-options-visibility: visible;
+    --dropdown-options-display: block;
 }
 
 .dropdown__option {
