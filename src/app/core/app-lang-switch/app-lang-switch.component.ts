@@ -61,12 +61,15 @@ export class AppLangSwitchComponent implements OnInit, OnDestroy {
     toggleLanguage(ev: MouseEvent): void {
         const selectedOption = ev.target as HTMLElement;
         const selectedOptionValue = selectedOption.dataset['value'];
+
+        if (selectedOptionValue === this.currentLang) return;
+
         this.languageService.toggle(selectedOptionValue);
     }
 
     showSelectedLanguage(): string {
         if (this.dropdownOpened) return '';
-        
+
         return Object
             .entries(this.languageOptions)
             .find(
