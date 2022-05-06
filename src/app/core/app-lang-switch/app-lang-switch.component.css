@@ -145,8 +145,3 @@
 .dropdown__option.selected::after {
     --dropdown-option-marker-opacity: 1;
 }
-
-.dropdown__option.selected:hover::after {
-    --dropdown-option-marker-content: '\f00d';
-    --dropdown-option-marker-font-size: calc(var(--font-size) * .9);
-}
