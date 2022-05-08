@@ -103,8 +103,6 @@
     color: var(--dropdown-options-text-color);
 
     /* Standard scrollbar styles */
-    scrollbar-width: thin;
-    scrollbar-color: var(--dropdown-scrollbar-foreground) var(--dropdown-scrollbar-background);
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
 
@@ -173,6 +171,25 @@
 
 .dropdown__option.selected::after {
     --dropdown-option-marker-opacity: 1;
+}
+
+
+/* Firefox specific styles for scrollbar */
+
+@supports (scrollbar-width: none) and (scrollbar-color: transparent transparent) {
+    .dropdown__options {
+        scrollbar-width: none;
+        scrollbar-color: var(--dropdown-scrollbar-foreground) var(--dropdown-scrollbar-background);
+    }
+
+    .dropdown__options:hover {
+        scrollbar-width: thin;
+        --dropdown-scrollbar-foreground: #555a;
+    }
+
+    .dropdown.darkmode .dropdown__options:hover {
+        --dropdown-scrollbar-foreground: hsl(200, 16%, 68%);
+    }
 }
 
 @supports not (overflow: overlay) {
