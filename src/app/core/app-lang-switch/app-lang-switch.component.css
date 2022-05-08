@@ -111,11 +111,15 @@
     box-shadow: 0 .1rem .175rem rgba(0, 0, 0, .5);
 }
 
-/* Webkite scrollbar styles */
+.dropdown.darkmode .dropdown__options:hover {
+    --dropdown-scrollbar-foreground: hsl(200, 16%, 68%);
+}
 
 .dropdown__options:hover {
     --dropdown-scrollbar-foreground: #555a;
 }
+
+/* Webkite scrollbar styles */
 
 .dropdown__options::-webkit-scrollbar {
     width: var(--dropdown-scrollbar-width);
