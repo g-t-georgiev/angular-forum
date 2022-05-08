@@ -170,3 +170,9 @@
 .dropdown__option.selected::after {
     --dropdown-option-marker-opacity: 1;
 }
+
+@supports not (overflow: overlay) {
+    .dropdown {
+        --dropdown-options-overflow: auto;
+    }
+}
