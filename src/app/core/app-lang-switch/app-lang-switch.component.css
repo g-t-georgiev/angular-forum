@@ -7,6 +7,11 @@
     --dropdown-text-color: currentColor;
     --dropdown-border-width: .05rem;
     --dropdown-border-color: hsl(0, 0%, 30%);
+
+    --dropdown-scrollbar-width: .4rem;
+    --dropdown-scrollbar-thumb-radius: 85% / 15%;
+    --dropdown-scrollbar-background: transparent;
+    --dropdown-scrollbar-foreground: transparent;
 }
 
 .darkmode {
@@ -30,7 +35,7 @@
     --dropdown-options-left-offset: calc(var(--dropdown-border-width) * -1);
     --dropdown-options-width: calc(100% + (2 * var(--dropdown-border-width)));
     --dropdown-options-max-height: 10vh;
-    --dropdown-options-overflow: auto;
+    --dropdown-options-overflow: overlay;
     --dropdown-options-background-color: var(--dropdown-background-color);
     --dropdown-options-text-color: var(--dropdown-text-color);
     --dropdown-options-border-style: solid;
@@ -97,7 +102,32 @@
     background-color: var(--dropdown-options-background-color);
     color: var(--dropdown-options-text-color);
 
+    /* Standard scrollbar styles */
+    scrollbar-width: thin;
+    scrollbar-color: var(--dropdown-scrollbar-foreground) var(--dropdown-scrollbar-background);
+    scrollbar-gutter: stable both-edges;
+    scroll-behavior: smooth;
+
     box-shadow: 0 .1rem .175rem rgba(0, 0, 0, .5);
+}
+
+/* Webkite scrollbar styles */
+
+.dropdown__options:hover {
+    --dropdown-scrollbar-foreground: #555a;
+}
+
+.dropdown__options::-webkit-scrollbar {
+    width: var(--dropdown-scrollbar-width);
+}
+
+.dropdown__options::-webkit-scrollbar-track {
+    background-color: var(--dropdown-scrollbar-background);
+}
+
+.dropdown__options::-webkit-scrollbar-thumb {
+    background-color: var(--dropdown-scrollbar-foreground);
+    border-radius: var(--dropdown-scrollbar-thumb-radius);
 }
 
 .dropdown.opened .dropdown__options {
