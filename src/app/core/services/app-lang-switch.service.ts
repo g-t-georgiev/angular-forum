@@ -5,7 +5,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export const LangOptions = {
     English: 'en',
-    Bulgarian: 'bg'
+    Български: 'bg',
+    Русский: 'ru',
+    Србски: 'sr',
+    Italiano: 'it',
+    Español: 'es',
+    Deutsch: 'de'
 }
 
 @Injectable()
