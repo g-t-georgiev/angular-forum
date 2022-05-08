@@ -105,7 +105,7 @@
     /* Standard scrollbar styles */
     scrollbar-width: thin;
     scrollbar-color: var(--dropdown-scrollbar-foreground) var(--dropdown-scrollbar-background);
-    scrollbar-gutter: stable both-edges;
+    scrollbar-gutter: stable;
     scroll-behavior: smooth;
 
     box-shadow: 0 .1rem .175rem rgba(0, 0, 0, .5);
